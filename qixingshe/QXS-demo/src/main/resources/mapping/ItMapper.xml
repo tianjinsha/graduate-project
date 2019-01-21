@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengshi.qixingshe.dao.ItMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="ResultMap" type="com.chengshi.qixingshe.model.It">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="author" property="author"/>
+        <result column="content" property="content"/>
+        <result column="createTime" property="createTime"/>
+        <result column="readingCount" property="readingCount"/>
+        <result column="userId" property="userId"/>
+        <result column="status" property="status"/>
+    </resultMap>
+
+    <resultMap id="ResultMap2" type="com.chengshi.qixingshe.model.It">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="author" property="author"/>
+        <result column="content" property="content"/>
+        <result column="createTime" property="createTime"/>
+        <result column="readingCount" property="readingCount"/>
+        <result column="userId" property="userId"/>
+        <result column="status" property="status"/>
+        <association property="itCategory" column="categoryId" javaType="com.chengshi.qixingshe.model.ItCategory">
+            <result column="cname" property="cname"/>
+        </association>
+        <association property="user" column="userId" javaType="com.chengshi.qixingshe.model.User">
+            <result column="nickname" property="nickname"/>
+        </association>
+    </resultMap>
+
+    <sql id="selectIt">
+        SELECT
+        *
+        FROM
+        it
+    </sql>
+
+    <sql id="selectIt2">
+        SELECT i.*,c.cname,u.nickname
+        FROM it i
+        LEFT JOIN  it_category c ON i.itCategoryId=c.id
+        LEFT JOIN `user` u ON i.userId=u.id
+    </sql>
+
+    <select id="findById" resultMap="ResultMap2" parameterType="Integer">
+        <include refid="selectIt2"/>
+        WHERE id= #{id}
+    </select>
+
+    <select id="findList" resultMap="ResultMap2">
+        <include refid="selectIt2"/>
+    </select>
+
+    <select id="findPage" resultMap="ResultMap2">
+        <include refid="selectIt2"/>
+        <where>
+            <if test="title !=null and title!=''">
+                title LIKE CONCAT('%',#{title},'%')
+            </if>
+            <if test="author !=null and author!=''">
+                AND author LIKE CONCAT('%',#{author},'%')
+            </if>
+            <if test="fDate != null and fDate !=''">
+                AND DATEDIFF(createTime,#{fDate})&gt;0
+            </if>
+            <if test="tDate != null and tDate !=''">
+                AND DATEDIFF(createTime,#{tDate}) &lt;0
+            </if>
+            <if test="category !=null and category!=''">
+                AND i.itCategoryId=#{category}
+            </if>
+            <if test="status!=null">
+                <if test="status eq 0 or status eq 1">
+                    AND i.status=#{status}
+                </if>
+            </if>
+        </where>
+    </select>
+
+
+</mapper>

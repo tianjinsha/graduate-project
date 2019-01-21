@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengshi.qixingshe.dao.ItCategoryMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="ResultMap" type="com.chengshi.qixingshe.model.ItCategory">
+        <id column="id" property="id"/>
+        <result column="cname" property="cname"/>
+        <result column="cDescription" property="description"/>
+        <result column="sort" property="sort"/>
+    </resultMap>
+
+    <sql id="selectItCategory">
+        SELECT
+        *
+        FROM
+        it_category
+    </sql>
+
+    <select id="findById" resultMap="ResultMap" parameterType="Integer">
+        <include refid="selectItCategory"/>
+        WHERE id= #{id}
+    </select>
+
+    <select id="findList" resultMap="ResultMap">
+        <include refid="selectItCategory"/>
+    </select>
+
+    <select id="findPage" resultMap="ResultMap">
+        <include refid="selectItCategory"/>
+        <where>
+            <if test="cname !=null and cname!=''">
+                cname LIKE CONCAT('%',#{cname},'%')
+            </if>
+        </where>
+    </select>
+
+</mapper>

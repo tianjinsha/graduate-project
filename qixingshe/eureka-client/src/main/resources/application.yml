@@ -1,0 +1,32 @@
+server:
+  port: 1052
+spring:
+  application:
+    name: eureka-client
+  sleuth:
+    sampler:
+      percentage: 0.8
+  zipkin:
+    base-url: http://127.0.0.1:9411
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: admin
+#eureka
+eureka:
+  instance:
+    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 10
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    service-url:
+      defaultZone: http://user:password@eureka-dev:8761/eureka
+management:
+  security:
+    enabled: false #关闭安全验证
+logging:
+  file: "logs/boot-client-sample.log"
+
+

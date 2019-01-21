@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengshi.qixingshe.dao.AwareMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="ResultMap" type="com.chengshi.qixingshe.model.Aware">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="thumb" property="thumb"/>
+        <result column="description" property="description"/>
+        <result column="attentionCount" property="attentionCount"/>
+        <result column="answerCount" property="answerCount"/>
+        <result column="tags" property="tags"/>
+        <result column="createTime" property="createTime"/>
+        <result column="userId" property="userId"/>
+        <result column="status" property="status"/>
+    </resultMap>
+
+    <sql id="selectAware">
+        SELECT
+        *
+        FROM
+        aware
+    </sql>
+
+    <select id="findById" resultMap="ResultMap" parameterType="Integer">
+        <include refid="selectAware"/>
+        WHERE id= #{id}
+    </select>
+
+    <select id="findList" resultMap="ResultMap">
+        <include refid="selectAware"/>
+    </select>
+
+    <select id="findPage" resultMap="ResultMap">
+        <include refid="selectAware"/>
+        <where>
+            <if test="title !=null and title!=''">
+                title LIKE CONCAT('%',#{title},'%')
+            </if>
+            <if test="fDate != null and fDate !=''">
+                AND DATEDIFF(createTime,#{fDate})&gt;0
+            </if>
+            <if test="tDate != null and tDate !=''">
+                AND DATEDIFF(createTime,#{tDate}) &lt;0
+            </if>
+            <if test="status!=null">
+                <if test="status eq 0 or status eq 1">
+                    AND status=#{status}
+                </if>
+            </if>
+        </where>
+    </select>
+</mapper>

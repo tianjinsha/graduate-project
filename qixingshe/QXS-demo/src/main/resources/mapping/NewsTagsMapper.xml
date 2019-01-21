@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengshi.qixingshe.dao.NewsTagsMapper">
+
+    <resultMap id="ResultMap" type="com.chengshi.qixingshe.model.NewsTags">
+        <id column="id" property="id"/>
+        <result column="tname" property="tname"/>
+        <result column="description" property="description"/>
+        <result column="createTime" property="createTime"/>
+        <result column="categoryId" property="categoryId"/>
+    </resultMap>
+
+    <resultMap id="ResultMap2" type="com.chengshi.qixingshe.model.NewsTags">
+        <id column="id" property="id"/>
+        <result column="tname" property="tname"/>
+        <result column="tDescription" property="description"/>
+        <result column="createTime" property="createTime"/>
+        <result column="categoryId" property="categoryId"/>
+        <association property="newsCategory" column="categoryId" javaType="com.chengshi.qixingshe.model.NewsCategory">
+            <id column="id" property="id"/>
+            <result column="cname" property="cname"/>
+        </association>
+    </resultMap>
+
+    <sql id="selectNewsTags">
+        SELECT
+        *
+        FROM
+        news_tags
+    </sql>
+
+    <sql id="selectNewsTags2">
+        SELECT
+        t.*,c.*
+        FROM
+        news_tags t LEFT JOIN news_category c ON t.categoryId=c.id
+    </sql>
+
+    <select id="findById" resultMap="ResultMap2" parameterType="Integer">
+        <include refid="selectNewsTags2"/>
+        WHERE t.id= #{id}
+    </select>
+
+    <select id="findList" resultMap="ResultMap2">
+        <include refid="selectNewsTags2"/>
+    </select>
+
+    <select id="findPage" resultMap="ResultMap2">
+        <include refid="selectNewsTags2"/>
+        <where>
+            <if test="tname !=null and tname!=''">
+                t.tname LIKE CONCAT('%',#{tname},'%')
+            </if>
+            <if test="category !=null and category!=''">
+                AND t.categoryId=#{category}
+            </if>
+        </where>
+    </select>
+
+
+</mapper>

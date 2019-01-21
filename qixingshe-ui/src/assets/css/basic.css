@@ -1,0 +1,39 @@
+*{
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+}
+body{
+  background: rgb(245,245,245);
+  font-size:14px;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+}
+body,h1,h2,h3,h4,h5,h6,ul,ol,header,section,aside{
+  margin:0;
+  padding:0;
+}
+li{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+  color:#71777c;
+}
+button,input{
+  overflow: visible;
+}
+/*---------------------------------------------*/
+/*主要内容布局*/
+.view-wrap{
+  width:1000px;
+  margin: 75px auto 15px;
+  display: flex;
+
+}
+
+.main-container {
+  width: 680px;
+}
+.aside-container{
+  width:305px;
+  margin-left:15px;
+}
+/*---------------------------------------------*/

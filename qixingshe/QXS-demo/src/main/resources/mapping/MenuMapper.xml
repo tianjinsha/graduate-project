@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengshi.qixingshe.dao.MenuMapper">
+
+    <resultMap id="ResultMap" type="com.chengshi.qixingshe.model.Menu">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="identity" property="identity"/>
+        <result column="icon" property="icon"/>
+        <result column="path" property="path"/>
+        <result column="method" property="method"/>
+        <result column="type" property="type"/>
+        <result column="sort" property="sort"/>
+        <result column="status" property="status"/>
+        <result column="parent" property="parent"/>
+    </resultMap>
+
+    <sql id="selectMenu">
+        SELECT
+        *
+        FROM
+        menu
+    </sql>
+
+    <select id="findList" resultMap="ResultMap">
+      <include refid="selectMenu"/>
+    </select>
+
+    <select id="findById" resultMap="ResultMap" parameterType="Integer">
+        where id=#{id}
+    </select>
+
+</mapper>

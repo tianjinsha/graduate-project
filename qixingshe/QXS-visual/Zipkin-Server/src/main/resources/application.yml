@@ -1,0 +1,40 @@
+server:
+  port: 9411
+spring:
+  application:
+    name: Zipkin-Server
+  zipkin:
+    enabled: false
+  #datasource
+  datasource:
+    schema: classpath:/zipkin.sql
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost/qixing_db?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 1234
+    initialize: false
+    continue-on-error: true
+  sleuth:
+    enabled: false
+  rabbitmq: #rabbitMQ
+    host: localhost
+    port: 5672
+    username: admin
+    password: admin
+#eureka
+eureka:
+  instance:
+    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 10
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    service-url:
+      defaultZone: http://user:password@eureka-dev:8761/eureka
+management:
+  security:
+    enabled: false #关闭安全验证
+logging:
+  file: "logs/Zipkin-Server-sample.log"
+
+

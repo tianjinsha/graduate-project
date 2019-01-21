@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengshi.qixingshe.dao.ItTagsMapper">
+
+    <resultMap id="ResultMap" type="com.chengshi.qixingshe.model.ItTags">
+        <id column="id" property="id"/>
+        <result column="tname" property="tname"/>
+        <result column="tDescription" property="description"/>
+        <result column="createTime" property="createTime"/>
+        <result column="categoryId" property="categoryId"/>
+    </resultMap>
+    <resultMap id="ResultMap2" type="com.chengshi.qixingshe.model.ItTags">
+        <id column="id" property="id"/>
+        <result column="tname" property="tname"/>
+        <result column="tDescription" property="description"/>
+        <result column="createTime" property="createTime"/>
+        <result column="categoryId" property="categoryId"/>
+        <association property="itCategory" column="categoryId" javaType="com.chengshi.qixingshe.model.ItCategory">
+            <result column="cname" property="cname"/>
+        </association>
+    </resultMap>
+
+    <sql id="selectItTags">
+        SELECT
+        *
+        FROM
+        it_tags
+    </sql>
+
+    <sql id="selectItTags2">
+        SELECT
+        t.*,c.cname
+        FROM
+        it_tags t LEFT JOIN it_category c ON t.categoryId=c.id
+    </sql>
+
+    <select id="findById" resultMap="ResultMap2" parameterType="Integer">
+        <include refid="selectItTags2"/>
+        WHERE id= #{id}
+    </select>
+
+    <select id="findList" resultMap="ResultMap2">
+        <include refid="selectItTags2"/>
+    </select>
+
+    <select id="findPage" resultMap="ResultMap2">
+        <include refid="selectItTags2"/>
+        <where>
+            <if test="tname !=null and tname!=''">
+                tname LIKE CONCAT('%',#{tname},'%')
+            </if>
+            <if test="category !=null and category!=''">
+                AND t.categoryId=#{category}
+            </if>
+        </where>
+    </select>
+
+
+</mapper>

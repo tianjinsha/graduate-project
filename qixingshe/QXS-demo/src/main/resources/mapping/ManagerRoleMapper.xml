@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengshi.qixingshe.dao.ManagerRoleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="ResultMap" type="com.chengshi.qixingshe.model.ManagerRole">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="identity" property="identity"/>
+        <result column="description" property="description"/>
+        <result column="createTime" property="createTime"/>
+        <result column="status" property="status"/>
+    </resultMap>
+
+    <sql id="selectManagerRole">
+        SELECT
+        *
+        FROM
+        manager_role
+    </sql>
+
+    <select id="findManagerRolePage" resultMap="ResultMap">
+        <include refid="selectManagerRole"/>
+        <where>
+            <if test="name != null and name != ''">
+                name LIKE CONCAT('%',#{name},'%')
+            </if>
+            <if test="status!=null">
+                <if test="status eq 0 or status eq 1">
+                    AND status=#{status}
+                </if>
+            </if>
+        </where>
+        ORDER BY createTime DESC
+    </select>
+</mapper>

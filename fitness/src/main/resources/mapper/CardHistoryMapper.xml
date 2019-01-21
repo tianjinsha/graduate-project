@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengshi.fitness.dao.CardHistoryMapper">
+    <resultMap id="BaseResultMap" type="com.chengshi.fitness.model.CardHistory">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="createTime" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="memberId" property="memberId" jdbcType="INTEGER"/>
+        <result column="cardNumber" property="cardNumber" jdbcType="INTEGER"/>
+        <result column="disableTime" property="disableTime" jdbcType="TIMESTAMP"/>
+        <result column="cardId" property="cardId" jdbcType="INTEGER"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, createTime, memberId, cardNumber, disableTime,cardId
+  </sql>
+    <select id="findPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from card_history
+        <where>
+            <if test="cardNumber != null and cardNumber != ''">
+                cardNumber LIKE CONCAT('%',#{cardNumber},'%')
+            </if>
+            <if test="fDate != null and fDate !=''">
+                AND DATEDIFF(createTime,#{fDate})&gt;0
+            </if>
+        </where>
+    </select>
+
+
+</mapper>

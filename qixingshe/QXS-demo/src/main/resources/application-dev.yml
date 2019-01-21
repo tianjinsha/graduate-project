@@ -1,0 +1,65 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: qxs-demo
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost/qixing_db?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 1234
+  session:
+    store-type: none
+  freemarker:
+    suffix: .ftl
+    template-loader-path: classpath:/templates/
+    request-context-attribute: request
+    settings:
+      template_update_delay: 0
+#    expose-request-attributes: true
+#    expose-session-attributes: true
+#    expose-spring-macro-helpers: false
+    cache: false
+  redis:
+    host: localhost
+    port: 6379
+    password: 1234
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+  resources:
+    chain:
+      cache: false
+
+
+mybatis-plus:
+  type-aliases-package: com.chengshi.qixingshe.dao
+  mapper-locations: classpath*:/mapping/**Mapper.xml
+  global-config:
+    id-type: 2
+    field-strategy: 2
+    refresh-mapper: true
+    db-column-underline: false
+  configuration:
+    map-underscore-to-camel-case: false
+    lazy-loading-enabled: true
+    cache-enabled: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    use-column-label: false
+    use-actual-param-name: false
+security:
+  basic:
+    enabled: false
+  headers:
+    frame: false
+logging:
+  level: debug
+chengshi:
+  qixingshe:
+    security:
+      browser:
+        loginPage: /login.html
+        loginType: REDIRECT
+        rememberMeSeconds: 7200
+#    common:
+#      pageSize: 15
+

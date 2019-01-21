@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengshi.qixingshe.dao.ManagerMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="ResultMap" type="com.chengshi.qixingshe.model.Manager">
+        <id column="id" property="id"/>
+        <result column="account" property="account"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="createTime" property="createTime"/>
+        <result column="lastTime" property="lastTime"/>
+        <result column="authorityId" property="authorityId"/>
+        <result column="status" property="status"/>
+        <result column="email" property="email"/>
+    </resultMap>
+
+    <sql id="selectManager">
+        SELECT
+        *
+        FROM
+        manager
+    </sql>
+
+    <select id="findManagerPage" resultMap="ResultMap">
+        <include refid="selectManager"/>
+        <where>
+            <if test="account != null and account != ''">
+                account LIKE CONCAT('%',#{account},'%')
+            </if>
+            <if test="fDate != null and fDate !=''">
+                AND DATEDIFF(createTime,#{fDate})&gt;0
+            </if>
+            <if test="tDate != null and tDate !=''">
+                AND DATEDIFF(createTime,#{tDate}) &lt;0
+            </if>
+            <if test="status!=null">
+                <if test="status eq 0 or status eq 1">
+                    AND status=#{status}
+                </if>
+            </if>
+        </where>
+        ORDER BY createTime DESC
+    </select>
+
+<insert id="addManager">
+    insert into manager(account,username,password,createTime,authorityId,status,email)
+    values(#{account},#{username},#{password},#{createTime},#{authorityId},#{status},${email})
+</insert>
+</mapper>

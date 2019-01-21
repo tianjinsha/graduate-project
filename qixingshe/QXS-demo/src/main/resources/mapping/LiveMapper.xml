@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengshi.qixingshe.dao.LiveMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="ResultMap" type="com.chengshi.qixingshe.model.Live">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="content" property="content"/>
+        <result column="createTime" property="createTime"/>
+        <result column="dislikeCount" property="dislikeCount"/>
+        <result column="readingCount" property="readingCount"/>
+        <result column="likeCount" property="likeCount"/>
+        <result column="userId" property="userId"/>
+        <result column="topicId" property="topicId"/>
+        <result column="status" property="status"/>
+    </resultMap>
+
+    <resultMap id="ResultMap2" type="com.chengshi.qixingshe.model.Live">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="content" property="content"/>
+        <result column="createTime" property="createTime"/>
+        <result column="dislikeCount" property="dislikeCount"/>
+        <result column="readingCount" property="readingCount"/>
+        <result column="likeCount" property="likeCount"/>
+        <result column="userId" property="userId"/>
+        <result column="topicId" property="topicId"/>
+        <result column="status" property="status"/>
+        <association property="liveTopic" javaType="com.chengshi.qixingshe.model.LiveTopic">
+            <result column="cname" property="cname"></result>
+        </association>
+        <association property="user" javaType="com.chengshi.qixingshe.model.User">
+            <result column="nickname" property="nickname"></result>
+        </association>
+    </resultMap>
+
+    <sql id="selectLive">
+        SELECT
+        *
+        FROM
+        live
+    </sql>
+    <sql id="selectLive2">
+        SELECT
+            l.*, t.cname,u.nickname
+        FROM
+            live l
+        LEFT JOIN live_topic t ON l.topicId = t.id
+        LEFT JOIN `user` u ON l.userId = u.id
+    </sql>
+
+    <select id="findById" resultMap="ResultMap" parameterType="Integer">
+        <include refid="selectLive"/>
+        WHERE id= #{id}
+    </select>
+
+    <select id="findList" resultMap="ResultMap">
+        <include refid="selectLive"/>
+    </select>
+
+    <select id="findPage" resultMap="ResultMap2">
+        <include refid="selectLive2"/>
+        <where>
+            <if test="title !=null and title!=''">
+                l.title LIKE CONCAT('%',#{title},'%')
+            </if>
+            <if test="fDate != null and fDate !=''">
+                AND DATEDIFF(createTime,#{fDate})&gt;0
+            </if>
+            <if test="tDate != null and tDate !=''">
+                AND DATEDIFF(createTime,#{tDate}) &lt;0
+            </if>
+            <if test="status!=null">
+                <if test="status eq 0 or status eq 1">
+                    AND l.status=#{status}
+                </if>
+            </if>
+        </where>
+    </select>
+
+</mapper>

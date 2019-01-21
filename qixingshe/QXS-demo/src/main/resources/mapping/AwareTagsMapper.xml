@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengshi.qixingshe.dao.AwareTagsMapper">
+    <resultMap id="ResultMap" type="com.chengshi.qixingshe.model.AwareTags">
+        <id column="id" property="id"/>
+        <result column="tname" property="tname"/>
+        <result column="tDescription" property="description"/>
+        <result column="attentionCount" property="attentionCount"/>
+        <result column="createTime" property="createTime"/>
+        <result column="awareTypeId" property="awareTypeId"/>
+    </resultMap>
+    <resultMap id="ResultMap2" type="com.chengshi.qixingshe.model.AwareTags">
+        <id column="id" property="id"/>
+        <result column="tname" property="tname"/>
+        <result column="tDescription" property="description"/>
+        <result column="attentionCount" property="attentionCount"/>
+        <result column="createTime" property="createTime"/>
+        <result column="awareTypeId" property="awareTypeId"/>
+        <association property="awareType" javaType="com.chengshi.qixingshe.model.AwareType">
+            <result column="cname" property="cname"/>
+        </association>
+    </resultMap>
+
+    <sql id="selectAwareTags">
+        SELECT
+        *
+        FROM
+        aware_tags
+    </sql>
+    <sql id="selectAwareTags2">
+        SELECT
+        t.*,c.cname
+        FROM
+        aware_tags t LEFT JOIN aware_type c ON t.awareTypeId=c.id
+    </sql>
+
+    <select id="findById" resultMap="ResultMap2" parameterType="Integer">
+        <include refid="selectAwareTags2"/>
+        WHERE id= #{id}
+    </select>
+
+    <select id="findList" resultMap="ResultMap2">
+        <include refid="selectAwareTags"/>
+    </select>
+
+    <select id="findPage" resultMap="ResultMap2">
+        <include refid="selectAwareTags2"/>
+        <where>
+            <if test="tname !=null and tname!=''">
+                tname LIKE CONCAT('%',#{tname},'%')
+            </if>
+            <if test="category !=null and category!=''">
+                AND awareTypeId=#{category}
+            </if>
+        </where>
+    </select>
+
+</mapper>

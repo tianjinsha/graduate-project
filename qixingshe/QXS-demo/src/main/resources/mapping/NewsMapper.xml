@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengshi.qixingshe.dao.NewsMapper">
+
+    <!-- 开启二级缓存 -->
+
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="ResultMap" type="com.chengshi.qixingshe.model.News">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="author" property="author"/>
+        <result column="source" property="source"/>
+        <result column="summary" property="summary"/>
+        <result column="content" property="content"/>
+        <result column="createTime" property="createTime"/>
+        <result column="likeCount" property="likeCount"/>
+        <result column="userId" property="userId"/>
+        <result column="status" property="status"/>
+    </resultMap>
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="ResultMap2" type="com.chengshi.qixingshe.model.News">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="author" property="author"/>
+        <result column="source" property="source"/>
+        <result column="summary" property="summary"/>
+        <result column="content" property="content"/>
+        <result column="createTime" property="createTime"/>
+        <result column="likeCount" property="likeCount"/>
+        <result column="readingCount" property="readingCount"/>
+        <result column="userId" property="userId"/>
+        <result column="status" property="status"/>
+        <association property="newsCategory" column="categoryId" javaType="com.chengshi.qixingshe.model.NewsCategory">
+            <id column="id" property="id"/>
+            <result column="cname" property="cname"/>
+        </association>
+    </resultMap>
+
+
+
+    <sql id="selectNews">
+        SELECT
+        *
+        FROM
+        news
+    </sql>
+
+    <sql id="selectNews2">
+        SELECT
+        n.*,c.id,c.cname
+        FROM
+        news n LEFT JOIN news_category c ON n.categoryId=c.id
+    </sql>
+
+    <select id="findById" resultMap="ResultMap2" parameterType="Integer">
+        <include refid="selectNews2"/>
+        WHERE n.id= #{id}
+    </select>
+
+    <select id="findList" resultMap="ResultMap">
+        <include refid="selectNews"/>
+    </select>
+
+    <select id="findPage" resultMap="ResultMap2">
+    <include refid="selectNews2"/>
+      <where>
+          <if test="title !=null and title!=''">
+              title LIKE CONCAT('%',#{title},'%')
+          </if>
+          <if test="category !=null and category!=''">
+              AND n.categoryId=#{category}
+          </if>
+          <if test="author !=null and author!=''">
+             AND author LIKE CONCAT('%',#{author},'%')
+          </if>
+          <if test="source !=null and source!=''">
+             AND source LIKE CONCAT('%',#{source},'%')
+          </if>
+          <if test="fDate != null and fDate !=''">
+              AND DATEDIFF(createTime,#{fDate})&gt;0
+          </if>
+          <if test="tDate != null and tDate !=''">
+              AND DATEDIFF(createTime,#{tDate}) &lt;0
+          </if>
+          <if test="status!=null">
+              <if test="status eq 0 or status eq 1">
+                  AND status=#{status}
+              </if>
+          </if>
+      </where>
+    </select>
+    
+    <update id="batchChangeStatus">
+        UPDATE news set status='2',status=#{status}
+        where id IN
+        <foreach separator="," index="index" item="item" collection="ids" close=")" open="(">
+            #{item}
+        </foreach>
+    </update>
+
+
+</mapper>

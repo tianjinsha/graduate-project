@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengshi.qixingshe.dao.UserMapper">
+
+    <!-- 开启二级缓存 -->
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="userResultMap" type="com.chengshi.qixingshe.model.User">
+        <id column="id" property="id"/>
+        <result column="nickname" property="nickname"/>
+        <result column="email" property="email"/>
+        <result column="phoneNum" property="phoneNum"/>
+        <result column="password" property="password"/>
+        <result column="official" property="official"/>
+        <result column="createTime" property="createTime"/>
+        <result column="updateTime" property="updateTime"/>
+        <result column="status" property="status"/>
+    </resultMap>
+
+    <sql id="selectUser">
+        SELECT
+        *
+        FROM
+        user
+    </sql>
+
+    <select id="findUser" resultMap="userResultMap" parameterType="Integer">
+        <include refid="selectUser"/>
+        WHERE id= #{id}
+    </select>
+
+    <select id="findUserList" resultMap="userResultMap">
+        <include refid="selectUser"/>
+    </select>
+    
+    <select id="findUserPage" resultMap="userResultMap">
+        <include refid="selectUser"/>
+        <where>
+            <if test="nickname != null and nickname != ''">
+               nickname LIKE CONCAT('%',#{nickname},'%')
+            </if>
+            <if test="fDate != null and fDate !=''">
+                AND DATEDIFF(createTime,#{fDate})&gt;0
+            </if>
+            <if test="tDate != null and tDate !=''">
+                AND DATEDIFF(createTime,#{tDate}) &lt;0
+            </if>
+            <if test="status!=null">
+                <choose>
+                    <when test="status eq 1 or status eq 2">
+                        AND status=#{status}
+                    </when>
+                    <otherwise>
+                        AND status!='0'
+                    </otherwise>
+                </choose>
+            </if>
+            <if test="status==null">
+                AND status!='0'
+            </if>
+
+
+        </where>
+        ORDER BY createTime DESC
+    </select>
+
+    <select id="findUserPageDel" resultMap="userResultMap">
+        <include refid="selectUser"/>
+        <where>
+            <if test="nickname != null and nickname != ''">
+                nickname LIKE CONCAT('%',#{nickname},'%')
+            </if>
+            <if test="fDate != null and fDate !=''">
+                AND DATEDIFF(createTime,#{fDate})&gt;0
+            </if>
+            <if test="tDate != null and tDate !=''">
+                AND DATEDIFF(createTime,#{tDate}) &lt;0
+            </if>
+            AND status='0'
+        </where>
+        ORDER BY updateTime DESC
+    </select>
+
+    <insert id="add">
+        INSERT INTO user
+                (nickname,email,phoneNum,password,official,status,createTime)
+        values (#{nickname},#{email},#{phoneNum},#{password},#{official},#{status},#{createTime})
+    </insert>
+    
+    <update id="update">
+        UPDATE user SET
+                        nickname=#{nickname},
+                        email=#{email},
+                        phoneNum=#{phoneNum},
+                        pasword=#{password},
+                        official=#{official}
+                        status=#{status}
+                        updateTime=#{updateTime}
+    </update>
+    
+    <update id="recover" parameterType="Integer">
+        UPDATE user SET status='2'
+        WHERE  id=#{id}
+    </update>
+
+    <update id="updateStatus">
+        UPDATE user SET status=#{status},updateTime=NOW()
+        WHERE  id=#{id}
+    </update>
+
+    
+    <delete id="delete" parameterType="Integer">
+        DELETE  from user where id=#{id}
+    </delete>
+
+    <update id="batchDisable" parameterType="java.util.List">
+        UPDATE user set status='0',updateTime=NOW()
+        where id IN
+        <foreach separator="," index="index" item="item" collection="ids" close=")" open="(">
+            #{item}
+        </foreach>
+    </update>
+
+    <update id="batchRecover" parameterType="java.util.List">
+        UPDATE user set status='2',updateTime=NOW()
+        where id IN
+        <foreach separator="," index="index" item="item" collection="ids" close=")" open="(">
+            #{item}
+        </foreach>
+    </update>
+
+</mapper>
