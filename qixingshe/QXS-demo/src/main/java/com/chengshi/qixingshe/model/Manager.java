@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.enums.IdType;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * <p>
@@ -24,12 +25,23 @@ public class Manager extends Model<Manager> {
     /**
      * 主键ID，自增
      */
-    @TableId(value = "id", type = IdType.AUTO)
+    @TableId(value = "managerId", type = IdType.AUTO)
     private Integer id;
     /**
      * 账号
      */
     private String account;
+
+    /**
+     * 电话号码
+     */
+    private String phone;
+
+    /**
+     * 邮箱
+     */
+    private String email;
+
     /**
      * 用户名
      */
@@ -57,26 +69,14 @@ public class Manager extends Model<Manager> {
     private String status;
 
     /**
-     * 邮箱
+     * 角色列表
      */
-    private String email;
+    List<Role> roles;
+
 
     @Override
     protected Serializable pkVal() {
         return this.id;
     }
 
-    @Override
-    public String toString() {
-        return "Manager{" +
-        ", id=" + id +
-        ", account=" + account +
-        ", username=" + username +
-        ", password=" + password +
-        ", createTime=" + createTime +
-        ", lastTime=" + lastTime +
-        ", authorityId=" + authorityId +
-        ", status=" + status +
-        "}";
-    }
 }

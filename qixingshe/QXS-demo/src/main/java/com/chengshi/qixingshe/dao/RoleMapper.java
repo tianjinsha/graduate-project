@@ -18,6 +18,13 @@ import java.util.Map;
 public interface RoleMapper extends BaseMapper<Role> {
 
     /**
+     * 根据角色查找角色
+     * @param id
+     * @return
+     */
+    Role findRoleById(int id);
+
+    /**
      * @Description 查找角色列表
      * @param query
      * @param condition

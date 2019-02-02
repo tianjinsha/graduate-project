@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.chengshi.qixingshe.dao.ManagerMapper">
+
+
+
     <!-- 通用查询映射结果 -->
     <resultMap id="ResultMap" type="com.chengshi.qixingshe.model.Manager">
-        <id column="id" property="id"/>
+        <id column="managerId" property="id"/>
         <result column="account" property="account"/>
+        <result column="email" property="email"/>
+        <result column="phone" property="phone"/>
         <result column="username" property="username"/>
         <result column="password" property="password"/>
         <result column="createTime" property="createTime"/>
         <result column="lastTime" property="lastTime"/>
-        <result column="authorityId" property="authorityId"/>
         <result column="status" property="status"/>
-        <result column="email" property="email"/>
     </resultMap>
+
+    <resultMap id="resultMapWithRole" type="com.chengshi.qixingshe.model.Manager">
+        <id column="managerId" property="id"/>
+        <result column="account" property="account"/>
+        <result column="email" property="email"/>
+        <result column="phone" property="phone"/>
+        <result column="password" property="password"/>
+        <collection column="managerId" property="roles"  select="com.chengshi.qixingshe.dao.AuthorityMapper.findRolesByUserId"></collection>
+    </resultMap>
+
 
     <sql id="selectManager">
         SELECT
@@ -21,6 +34,24 @@
         manager
     </sql>
 
+    <!--更具用户id查找管理员-->
+    <select id="findManagerById" resultMap="resultMapWithRole" parameterType="int">
+        <include refid="selectManager"/>
+        WHERE managerId=#{id}
+    </select>
+
+    <!--更具用户账号查找管理员 -->
+    <select id="findManagerByAccount" resultMap="resultMapWithRole" parameterType="String">
+        <include refid="selectManager"/>
+        WHERE account=#{account}
+    </select>
+    <!--更具用户电话查找管理员 -->
+    <select id="findManagerByPhone" resultMap="resultMapWithRole" parameterType="String">
+        <include refid="selectManager"/>
+        WHERE phone=#{phone}
+    </select>
+
+    <!--分页查找所有管理员-->
     <select id="findManagerPage" resultMap="ResultMap">
         <include refid="selectManager"/>
         <where>
@@ -43,7 +74,7 @@
     </select>
 
 <insert id="addManager">
-    insert into manager(account,username,password,createTime,authorityId,status,email)
-    values(#{account},#{username},#{password},#{createTime},#{authorityId},#{status},${email})
+    insert into manager(account,phone,username,password,createTime,authorityId,status,email)
+    values(#{account},#{phone},#{username},#{password},#{createTime},#{authorityId},#{status},${email})
 </insert>
 </mapper>

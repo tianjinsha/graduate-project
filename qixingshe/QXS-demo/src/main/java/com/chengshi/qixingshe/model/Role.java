@@ -1,16 +1,17 @@
 package com.chengshi.qixingshe.model;
 
-import com.baomidou.mybatisplus.enums.IdType;
-import java.util.Date;
-import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.enums.IdType;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author ${author}
@@ -21,12 +22,17 @@ public class Role extends Model<Role> {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id", type = IdType.AUTO)
+    @TableId(value = "roleId", type = IdType.AUTO)
     private Integer id;
     /**
      * 角色名称
      */
     private String name;
+
+    /**
+     * 角色标识
+     */
+    private String identity;
     /**
      * 角色描述
      */
@@ -40,19 +46,14 @@ public class Role extends Model<Role> {
      */
     private String status;
 
+    /**
+     * 管理员列表
+     */
+    private List<Manager> managers;
+
     @Override
     protected Serializable pkVal() {
         return this.id;
     }
 
-    @Override
-    public String toString() {
-        return "Role{" +
-        ", id=" + id +
-        ", name=" + name +
-        ", description=" + description +
-        ", createTime=" + createTime +
-        ", status=" + status +
-        "}";
-    }
 }

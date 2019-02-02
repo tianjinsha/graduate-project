@@ -17,6 +17,18 @@ import java.util.Map;
  */
 public interface ManagerMapper extends BaseMapper<Manager> {
 
+
+    /**
+     * 更具用户id查找用户
+     * @param id
+     * @return
+     */
+    Manager findManagerById(int id);
+
+    Manager findManagerByAccount(String account);
+
+    Manager findManagerByPhone(String Phone);
+
     List<Object> findManagerPage(Query<Object> query, Map<String, Object> condition);
 
     Integer addManager(Manager manager);

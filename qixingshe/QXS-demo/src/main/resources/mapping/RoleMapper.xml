@@ -4,11 +4,20 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="roleResultMap" type="com.chengshi.qixingshe.model.Role">
-        <id column="id" property="id"/>
+        <id column="roleId" property="id"/>
         <result column="name" property="name"/>
         <result column="description" property="description"/>
         <result column="createTime" property="createTime"/>
         <result column="status" property="status"/>
+    </resultMap>
+
+    <resultMap id="roleResultWithManagersMap" type="com.chengshi.qixingshe.model.Role">
+        <id column="roleId" property="id"/>
+        <result column="name" property="name"/>
+        <result column="description" property="description"/>
+        <result column="createTime" property="createTime"/>
+        <result column="status" property="status"/>
+        <collection column="roleId" property="managers" select="com.chengshi.qixingshe.dao.AuthorityMapper.findManagersByRoleId"></collection>
     </resultMap>
 
     <sql id="selectRole">
@@ -17,6 +26,11 @@
         FROM
         role
     </sql>
+
+    <select id="findRoleById" resultMap="roleResultWithManagersMap" parameterType="int">
+        <include refid="selectRole"/>
+        WHERE roleId=#{id}
+    </select>
 
     <select id="selectRoleList" resultMap="roleResultMap">
         <include refid="selectRole"/>

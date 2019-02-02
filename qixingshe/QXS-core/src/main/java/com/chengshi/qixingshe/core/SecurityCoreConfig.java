@@ -2,9 +2,10 @@ package com.chengshi.qixingshe.core;
 
 import com.chengshi.qixingshe.core.properties.MineProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import com.chengshi.qixingshe.core.properties.security.SecurityProperties;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  * 读取自定义的配置
@@ -15,4 +16,8 @@ import com.chengshi.qixingshe.core.properties.security.SecurityProperties;
 @EnableConfigurationProperties(MineProperties.class)
 public class SecurityCoreConfig {
 
+    @Bean
+    public PasswordEncoder PasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 }

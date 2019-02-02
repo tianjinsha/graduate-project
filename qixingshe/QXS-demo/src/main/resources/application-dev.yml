@@ -7,7 +7,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost/qixing_db?useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
-    password: 1234
+    password: 123456@grg
   session:
     store-type: none
   freemarker:
@@ -30,7 +30,6 @@ spring:
     chain:
       cache: false
 
-MyUserDetailService
 mybatis-plus:
   type-aliases-package: com.chengshi.qixingshe.dao
   mapper-locations: classpath*:/mapping/**Mapper.xml

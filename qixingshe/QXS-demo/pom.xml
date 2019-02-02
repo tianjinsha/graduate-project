@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.chengshi.qixingshe</groupId>
-        <artifactId>QXS-Parent</artifactId>
+        <artifactId>qixingshe</artifactId>
         <version>1.0.0</version>
     </parent>
     <artifactId>QXS-demo</artifactId>

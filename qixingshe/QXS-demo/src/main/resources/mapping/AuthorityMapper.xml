@@ -2,6 +2,48 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.chengshi.qixingshe.dao.AuthorityMapper">
 
+    <parameterMap id="UserRoleParameter" type="com.chengshi.qixingshe.model.Authority">
+        <parameter property="userId"/>
+        <parameter property="roleId"/>
+    </parameterMap>
+
+    <insert id="insertAuthority" parameterMap="UserRoleParameter">
+        INSERT INTO authority(userId,roleId)
+        VALUES(#{userId},#{roleId})
+    </insert>
+
+    <!--根据角色ID,查找当前角色的所有管理员-->
+    <resultMap id="resultUserMap" type="com.chengshi.qixingshe.model.Manager">
+        <id column="managerId" property="id"/>
+        <result column="account" property="account"/>
+        <result column="email" property="email"/>
+        <result column="phone" property="phone"/>
+        <result column="password" property="password"/>
+    </resultMap>
+
+    <select id="findManagersByRoleId" resultMap="resultUserMap" parameterType="Integer">
+        SELECT a.id,m.*
+        FROM authority a
+        RIGHT JOIN manager m  ON  a.userId=m.managerId
+        WHERE roleId=#{roleId}
+    </select>
+
+    <!--根据用户id,查找当前用户的所有角色-->
+    <resultMap id="resultRoleMap" type="com.chengshi.qixingshe.model.Role">
+        <result column="name" property="name"/>
+        <result column="status" property="status"/>
+    </resultMap>
+
+    <select id="findRolesByUserId" resultMap="resultRoleMap" parameterType="Integer">
+        SELECT
+            r.*
+        FROM
+            authority a
+        RIGHT JOIN role r ON a.roleId = r.roleId
+        WHERE
+            a.userId = #{managerId}
+
+    </select>
 
 
 </mapper>

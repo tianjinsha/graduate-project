@@ -6,6 +6,7 @@ import com.chengshi.qixingshe.core.properties.MineProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -56,11 +57,12 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig{
 	@Autowired
 	private UserDetailsService userDetailsService;
 
-	@Bean
-	public PasswordEncoder PasswordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
-	
+	/**
+	 * 加密
+	 */
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
 
 	@Bean
 	public PersistentTokenRepository persistentTokenRepository() {
@@ -69,6 +71,13 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig{
 //		tokenRepository.setCreateTableOnStartup(true);
 		return tokenRepository;
 	}
+
+
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
+	}
+
 	/**
 	 * spring security 安全配置
 	 * 配置登录选项
