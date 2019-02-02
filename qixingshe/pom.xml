@@ -4,16 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.chengshi.qixingshe</groupId>
-    <artifactId>QXS-Parent</artifactId>
+    <artifactId>qixingshe</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
     <name>qixingshe project</name>
     <description>The parent of all project</description>
 
     <properties>
-        <jdk.version>1.8</jdk.version>
+        <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven-compiler-plugin.version>3.6.2</maven-compiler-plugin.version>
         <spring-cloud.Edgware.version>Edgware.SR5</spring-cloud.Edgware.version>
         <spring-cloud.Dalston.version>Dalston.SR5</spring-cloud.Dalston.version>
         <platform-bom.version>Brussels-SR14</platform-bom.version>
@@ -45,10 +44,9 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>${jdk.version}</source>
-                    <target>${jdk.version}</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
