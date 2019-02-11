@@ -1,6 +1,6 @@
 package com.chengshi.qixingshe.core;
 
-import com.chengshi.qixingshe.core.properties.MineProperties;
+import com.chengshi.qixingshe.core.properties.security.SecurityProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,11 +9,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  * 读取自定义的配置
+ *
  * @author tian
  * @date 2018年11月25日
  */
 @Configuration
-@EnableConfigurationProperties(MineProperties.class)
+@EnableConfigurationProperties(SecurityProperties.class)
 public class SecurityCoreConfig {
 
     @Bean

@@ -10,7 +10,7 @@ import java.util.Date;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author ${author}
@@ -76,15 +76,15 @@ public class Live extends Model<Live> {
     @Override
     public String toString() {
         return "Live{" +
-        ", id=" + id +
-        ", title=" + title +
-        ", content=" + content +
-        ", readingCount=" + readingCount +
-        ", likeCount=" + likeCount +
-        ", dislikeCount=" + dislikeCount +
-        ", createTime=" + createTime +
-        ", userID=" + userId +
-        ", topicId=" + topicId +
-        "}";
+                ", id=" + id +
+                ", title=" + title +
+                ", content=" + content +
+                ", readingCount=" + readingCount +
+                ", likeCount=" + likeCount +
+                ", dislikeCount=" + dislikeCount +
+                ", createTime=" + createTime +
+                ", userID=" + userId +
+                ", topicId=" + topicId +
+                "}";
     }
 }

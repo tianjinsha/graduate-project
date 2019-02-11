@@ -3,7 +3,6 @@
 <mapper namespace="com.chengshi.qixingshe.dao.ManagerMapper">
 
 
-
     <!-- 通用查询映射结果 -->
     <resultMap id="ResultMap" type="com.chengshi.qixingshe.model.Manager">
         <id column="managerId" property="id"/>
@@ -23,7 +22,8 @@
         <result column="email" property="email"/>
         <result column="phone" property="phone"/>
         <result column="password" property="password"/>
-        <collection column="managerId" property="roles"  select="com.chengshi.qixingshe.dao.AuthorityMapper.findRolesByUserId"></collection>
+        <collection column="managerId" property="roles"
+                    select="com.chengshi.qixingshe.dao.AuthorityMapper.findRolesByUserId"></collection>
     </resultMap>
 
 
@@ -34,22 +34,46 @@
         manager
     </sql>
 
-    <!--更具用户id查找管理员-->
+    <!--根据用户id查找管理员-->
     <select id="findManagerById" resultMap="resultMapWithRole" parameterType="int">
         <include refid="selectManager"/>
         WHERE managerId=#{id}
     </select>
 
-    <!--更具用户账号查找管理员 -->
+    <!--根据用户账号查找管理员 -->
     <select id="findManagerByAccount" resultMap="resultMapWithRole" parameterType="String">
         <include refid="selectManager"/>
         WHERE account=#{account}
     </select>
-    <!--更具用户电话查找管理员 -->
+
+    <!--根据用户电话查找管理员 -->
     <select id="findManagerByPhone" resultMap="resultMapWithRole" parameterType="String">
         <include refid="selectManager"/>
         WHERE phone=#{phone}
     </select>
+
+    <!--根据用户邮箱查找管理员 -->
+    <select id="findManagerByEmail" resultMap="resultMapWithRole" parameterType="String">
+        <include refid="selectManager"/>
+        WHERE email=#{email}
+    </select>
+
+<select id="findManagerByKey" resultMap="ResultMap">
+    <include refid="selectManager"/>
+    <where>
+        <if test="id != null and id != ''">
+            managerId=#{id}
+        </if>
+        <if test="account != null and account != ''">
+           AND account=#{account}
+        </if>
+        <if test="phone != null and phone != ''">
+           AND phone=#{phone}
+        </if><if test="email != null and email != ''">
+           AND email=#{email}
+        </if>
+    </where>
+</select>
 
     <!--分页查找所有管理员-->
     <select id="findManagerPage" resultMap="ResultMap">
@@ -73,7 +97,7 @@
         ORDER BY createTime DESC
     </select>
 
-<insert id="addManager">
+    <insert id="addManager">
     insert into manager(account,phone,username,password,createTime,authorityId,status,email)
     values(#{account},#{phone},#{username},#{password},#{createTime},#{authorityId},#{status},${email})
 </insert>

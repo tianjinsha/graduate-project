@@ -28,7 +28,8 @@
                 <span class="x-red">*</span>名称
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="L_name" name="qname" required="" lay-verify="newsCategory_name" value="${newsCategory.qname}"}
+                <input type="text" id="L_name" name="qname" required="" lay-verify="newsCategory_name"
+                       value="${newsCategory.qname}" }
                        autocomplete="off" class="layui-input">
             </div>
             <div class="layui-form-mid layui-word-aux">
@@ -40,7 +41,8 @@
                 <span class="x-red">*</span>排序
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="L_sort" name="sort" required="" lay-verify="newsCategory_sort" value="${newsCategory.sort}"}
+                <input type="text" id="L_sort" name="sort" required="" lay-verify="newsCategory_sort"
+                       value="${newsCategory.sort}" }
                        autocomplete="off" class="layui-input">
             </div>
             <div class="layui-form-mid layui-word-aux">
@@ -52,7 +54,8 @@
                 <span class="x-red">*</span>描述
             </label>
             <div class="layui-input-block">
-                 <textarea name="description" placeholder="请输入内容" id="L_description" lay-verify="newsCategory_description"
+                 <textarea name="description" placeholder="请输入内容" id="L_description"
+                           lay-verify="newsCategory_description"
                            class="layui-textarea">${newsCategory.description}</textarea>
             </div>
         </div>

@@ -1,16 +1,16 @@
 package com.chengshi.qixingshe.model;
 
-import com.baomidou.mybatisplus.enums.IdType;
-import java.util.Date;
-import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.enums.IdType;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author ${author}
@@ -81,16 +81,16 @@ public class News extends Model<News> {
     @Override
     public String toString() {
         return "News{" +
-        ", id=" + id +
-        ", title=" + title +
-        ", author=" + author +
-        ", source=" + source +
-        ", summary=" + summary +
-        ", content=" + content +
-        ", createTime=" + createTime +
-        ", likeCount=" + likeCount +
-        ", readingCount=" + readingCount +
-        ", userId=" + userId +
-        "}";
+                ", id=" + id +
+                ", title=" + title +
+                ", author=" + author +
+                ", source=" + source +
+                ", summary=" + summary +
+                ", content=" + content +
+                ", createTime=" + createTime +
+                ", likeCount=" + likeCount +
+                ", readingCount=" + readingCount +
+                ", userId=" + userId +
+                "}";
     }
 }

@@ -1,13 +1,14 @@
 package com.chengshi.qixingshe.model;
 
-import java.util.Date;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
+
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author ${author}
@@ -85,11 +86,11 @@ public class NewsComment extends Model<NewsComment> {
     @Override
     public String toString() {
         return "NewsComment{" +
-        ", id=" + id +
-        ", content=" + content +
-        ", createTime=" + createTime +
-        ", userId=" + userId +
-        ", newsId=" + newsId +
-        "}";
+                ", id=" + id +
+                ", content=" + content +
+                ", createTime=" + createTime +
+                ", userId=" + userId +
+                ", newsId=" + newsId +
+                "}";
     }
 }

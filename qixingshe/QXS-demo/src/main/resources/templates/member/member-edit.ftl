@@ -63,7 +63,8 @@
         <div class="layui-form-item">
             <label for="L_introduce" class="layui-form-label qxs-input-label">自我介绍</label>
             <div class="layui-input-block">
-                    <textarea name="introduce" placeholder="请输入内容" id="L_introduce" class="layui-textarea"> ${userinfo.introduce}
+                    <textarea name="introduce" placeholder="请输入内容" id="L_introduce"
+                              class="layui-textarea"> ${userinfo.introduce}
                     </textarea>
             </div>
         </div>

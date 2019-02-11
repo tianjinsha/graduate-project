@@ -1,14 +1,17 @@
 package com.chengshi.qixingshe.model;
 
 import com.baomidou.mybatisplus.enums.IdType;
+
 import java.util.Date;
+
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.activerecord.Model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author ${author}
@@ -101,12 +104,12 @@ public class Managerloginlog extends Model<Managerloginlog> {
     @Override
     public String toString() {
         return "Managerloginlog{" +
-        ", id=" + id +
-        ", managerId=" + managerId +
-        ", loginTime=" + loginTime +
-        ", loginLocation=" + loginLocation +
-        ", loginIp=" + loginIp +
-        ", duration=" + duration +
-        "}";
+                ", id=" + id +
+                ", managerId=" + managerId +
+                ", loginTime=" + loginTime +
+                ", loginLocation=" + loginLocation +
+                ", loginIp=" + loginIp +
+                ", duration=" + duration +
+                "}";
     }
 }

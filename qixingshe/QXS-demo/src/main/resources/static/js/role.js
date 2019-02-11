@@ -8,7 +8,7 @@ layui.use(['form', 'layer'], function () {
         role_name: function (value) {
             if (value.length < 2) {
                 return '角色名称至少得2个字符';
-            }else if (value.length>10){
+            } else if (value.length > 10) {
                 return '角色名称最多得10个字符';
             }
         },
@@ -25,7 +25,7 @@ layui.use(['form', 'layer'], function () {
             type: 'PUT',
             contentType: "application/json",
             url: '/role/edit',
-            data:JSON.stringify(data.field),
+            data: JSON.stringify(data.field),
             success: function () {
                 layer.alert("修改成功", {icon: 6}, function () {
                     // 获得frame索引
@@ -47,7 +47,7 @@ layui.use(['form', 'layer'], function () {
             type: 'POST',
             contentType: "application/json",
             url: '/role/add',
-            data:JSON.stringify(data.field),
+            data: JSON.stringify(data.field),
             success: function () {
                 layer.alert("添加成功", {icon: 6}, function () {
                     // 获得frame索引

@@ -11,12 +11,11 @@ import java.util.Map;
  */
 public class MapUtil {
     /**
-     *
+     * @param @param obj
+     * @return Map<String   ,   Object> 返回类型
+     * @throws
      * @Title: objectToMap
      * @Description: 将object转换为map，默认不保留空值
-     * @param @param obj
-     * @return Map<String,Object> 返回类型
-     * @throws
      */
     public static Map objectToMap(Object obj) {
 

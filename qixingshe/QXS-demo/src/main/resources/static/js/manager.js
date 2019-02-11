@@ -41,11 +41,11 @@ layui.use(['form', 'layer', 'laydate'], function () {
         }
         console.log(postData);
         form_submit({
-            formType:'POST',
-            title:'添加',
-            url:"/manager/add"
+            formType: 'POST',
+            title: '添加',
+            url: "/manager/add"
 
-        },postData);
+        }, postData);
         return false;
     });
     //监听提交
@@ -60,11 +60,11 @@ layui.use(['form', 'layer', 'laydate'], function () {
         }
         console.log(postData);
         form_submit({
-            formType:'PUT',
-            title:'修改',
-            url:"/manager/edit"
+            formType: 'PUT',
+            title: '修改',
+            url: "/manager/edit"
 
-        },postData);
+        }, postData);
         return false;
     });
 
@@ -80,11 +80,11 @@ layui.use(['form', 'layer', 'laydate'], function () {
             postData.status = '0';
         }
         form_submit({
-            formType:'POST',
-            title:'添加',
-            url:"/managerRole/add"
+            formType: 'POST',
+            title: '添加',
+            url: "/managerRole/add"
 
-        },postData);
+        }, postData);
 
     });
     //监听提交
@@ -99,11 +99,11 @@ layui.use(['form', 'layer', 'laydate'], function () {
             postData.status = '0';
         }
         form_submit({
-            formType:'PUT',
-            title:'修改',
-            url:"/managerRole/edit"
+            formType: 'PUT',
+            title: '修改',
+            url: "/managerRole/edit"
 
-        },postData);
+        }, postData);
 
     });
 });
@@ -164,7 +164,6 @@ function disableAll() {
         'timeout': 5000,
     })
 }
-
 
 
 /**

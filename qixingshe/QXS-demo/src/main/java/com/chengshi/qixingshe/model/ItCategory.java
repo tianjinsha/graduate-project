@@ -1,17 +1,17 @@
 package com.chengshi.qixingshe.model;
 
-import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.enums.IdType;
-import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.enums.IdType;
 import lombok.Data;
 
 import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author ${author}
@@ -51,10 +51,10 @@ public class ItCategory extends Model<ItCategory> {
     @Override
     public String toString() {
         return "ItCategory{" +
-        ", id=" + id +
-        ", cname=" + cname +
-        ", description=" + description +
-        ", sort=" + sort +
-        "}";
+                ", id=" + id +
+                ", cname=" + cname +
+                ", description=" + description +
+                ", sort=" + sort +
+                "}";
     }
 }

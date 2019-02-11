@@ -1,11 +1,11 @@
 package com.chengshi.qixingshe.dao;
 
-import com.chengshi.qixingshe.model.AwareComment;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.chengshi.qixingshe.model.AwareComment;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author ${author}

@@ -21,7 +21,8 @@
                 <input type="text" id="L_id" name="id" required="" readonly value="${live.id}"
                        autocomplete="off" class="layui-input">
             </div>
-        </div><div class="layui-form-item">
+        </div>
+        <div class="layui-form-item">
             <label for="L_title" class="layui-form-label">
                 <span class="x-red">*</span>标题
             </label>

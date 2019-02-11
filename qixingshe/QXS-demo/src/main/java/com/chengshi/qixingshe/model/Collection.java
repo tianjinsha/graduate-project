@@ -1,12 +1,13 @@
 package com.chengshi.qixingshe.model;
 
-import java.util.Date;
 import com.baomidou.mybatisplus.activerecord.Model;
+
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author ${author}
@@ -86,11 +87,11 @@ public class Collection extends Model<Collection> {
     @Override
     public String toString() {
         return "Collection{" +
-        ", id=" + id +
-        ", articleId=" + articleId +
-        ", collectionTime=" + collectionTime +
-        ", articleType=" + articleType +
-        ", userId=" + userId +
-        "}";
+                ", id=" + id +
+                ", articleId=" + articleId +
+                ", collectionTime=" + collectionTime +
+                ", articleType=" + articleType +
+                ", userId=" + userId +
+                "}";
     }
 }

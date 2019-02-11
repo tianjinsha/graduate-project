@@ -1,8 +1,8 @@
-layui.use(['form','layedit'], function () {
+layui.use(['form', 'layedit'], function () {
     var form = layui.form,
         layedit = layui.layedit;
-    var it_content=layedit.build('L_content'); //建立编辑器
-    var live_content=layedit.build('L_content'); //建立编辑器
+    var it_content = layedit.build('L_content'); //建立编辑器
+    var live_content = layedit.build('L_content'); //建立编辑器
 
     //自定义验证规则
     form.verify({
@@ -155,14 +155,14 @@ layui.use(['form','layedit'], function () {
     //添加it
     form.on('submit(it_add)', function (data) {
         //发异步，把数据提交给server
-        var postData=data.field;
+        var postData = data.field;
 
-        if (postData.status=='on'){
-            postData.status='1';
-        }else{
-            postData.status='0';
+        if (postData.status == 'on') {
+            postData.status = '1';
+        } else {
+            postData.status = '0';
         }
-        postData.content=layedit.getContent(it_content);
+        postData.content = layedit.getContent(it_content);
         console.log(postData);
         form_submit({
             formType: 'POST',
@@ -175,7 +175,7 @@ layui.use(['form','layedit'], function () {
     //添加aware分类
     form.on('submit(awareType_add)', function (data) {
         //发异步，把数据提交给server
-        var postData=data.field;
+        var postData = data.field;
         form_submit({
             formType: 'POST',
             title: '添加',
@@ -187,7 +187,7 @@ layui.use(['form','layedit'], function () {
     //修改aware分类
     form.on('submit(awareType_edit)', function (data) {
         //发异步，把数据提交给server
-        var postData=data.field;
+        var postData = data.field;
         form_submit({
             formType: 'PUT',
             title: '修改',
@@ -199,7 +199,7 @@ layui.use(['form','layedit'], function () {
     //添加aware标签
     form.on('submit(awareTags_add)', function (data) {
         //发异步，把数据提交给server
-        var postData=data.field;
+        var postData = data.field;
         form_submit({
             formType: 'POST',
             title: '添加',
@@ -211,7 +211,7 @@ layui.use(['form','layedit'], function () {
     //修改aware标签
     form.on('submit(awareTags_edit)', function (data) {
         //发异步，把数据提交给server
-        var postData=data.field;
+        var postData = data.field;
         form_submit({
             formType: 'PUT',
             title: '修改',
@@ -223,7 +223,7 @@ layui.use(['form','layedit'], function () {
     //添加aware标签
     form.on('submit(aware_add)', function (data) {
         //发异步，把数据提交给server
-        var postData=data.field;
+        var postData = data.field;
         form_submit({
             formType: 'POST',
             title: '添加',
@@ -235,7 +235,7 @@ layui.use(['form','layedit'], function () {
     //修改aware标签
     form.on('submit(aware_edit)', function (data) {
         //发异步，把数据提交给server
-        var postData=data.field;
+        var postData = data.field;
         form_submit({
             formType: 'PUT',
             title: '修改',
@@ -247,7 +247,7 @@ layui.use(['form','layedit'], function () {
     //添加liveTopic
     form.on('submit(liveTopic_add)', function (data) {
         //发异步，把数据提交给server
-        var postData=data.field;
+        var postData = data.field;
         form_submit({
             formType: 'POST',
             title: '添加',
@@ -259,7 +259,7 @@ layui.use(['form','layedit'], function () {
     //修改aware标签
     form.on('submit(liveTopic_edit)', function (data) {
         //发异步，把数据提交给server
-        var postData=data.field;
+        var postData = data.field;
         form_submit({
             formType: 'PUT',
             title: '修改',
@@ -271,14 +271,14 @@ layui.use(['form','layedit'], function () {
     //添加live
     form.on('submit(live_add)', function (data) {
         //发异步，把数据提交给server
-        var postData=data.field;
+        var postData = data.field;
 
-        if (postData.status=='on'){
-            postData.status='1';
-        }else{
-            postData.status='0';
+        if (postData.status == 'on') {
+            postData.status = '1';
+        } else {
+            postData.status = '0';
         }
-        postData.content=layedit.getContent(live_content);
+        postData.content = layedit.getContent(live_content);
         console.log(postData);
         form_submit({
             formType: 'POST',
@@ -291,14 +291,14 @@ layui.use(['form','layedit'], function () {
     //修改live
     form.on('submit(live_edit)', function (data) {
         //发异步，把数据提交给server
-        var postData=data.field;
+        var postData = data.field;
 
-        if (postData.status=='on'){
-            postData.status='1';
-        }else{
-            postData.status='0';
+        if (postData.status == 'on') {
+            postData.status = '1';
+        } else {
+            postData.status = '0';
         }
-        postData.content=layedit.getContent(live_content);
+        postData.content = layedit.getContent(live_content);
         form_submit({
             formType: 'PUT',
             title: '修改',
@@ -307,8 +307,6 @@ layui.use(['form','layedit'], function () {
         return false;
     });
 });
-
-
 
 
 /**
@@ -397,6 +395,7 @@ function newsCategory_delete(obj, id) {
         'timeout': 5000,
     })
 }
+
 /**
  * ==========================================================================
  */
@@ -444,6 +443,7 @@ function itCategory_deleteAll() {
         'timeout': 5000,
     })
 }
+
 /**
  * it分类-删除
  * @param obj
@@ -457,6 +457,7 @@ function itCategory_delete(obj, id) {
         'timeout': 5000,
     })
 }
+
 /**
  * ==========================================================================
  */
@@ -473,6 +474,7 @@ function itTags_deleteAll() {
         'timeout': 5000,
     })
 }
+
 /**
  * it分类-删除
  * @param obj
@@ -549,6 +551,7 @@ function it_deleteAll() {
         'timeout': 5000,
     })
 }
+
 /**
  * ==========================================================================
  */
@@ -605,6 +608,7 @@ function awareTags_deleteAll() {
         'timeout': 5000,
     })
 }
+
 /**
  * ==========================================================================
  */
@@ -634,6 +638,7 @@ function aware_deleteAll() {
         'timeout': 5000,
     })
 }
+
 /**
  * 用户状态改变：启用1，停用0
  * @param obj
@@ -682,6 +687,7 @@ function liveTopic_delete(obj, id) {
         'timeout': 5000,
     })
 }
+
 /**
  * liveTopic 话题-批量删除
  */
@@ -711,6 +717,7 @@ function live_delete(obj, id) {
         'timeout': 5000,
     })
 }
+
 /**
  * liveTopic 话题-批量删除
  */

@@ -22,7 +22,7 @@ import java.util.Map;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author ${author}
@@ -40,57 +40,57 @@ public class NewsTagsController {
     INewsCategoryService newsCategoryService;
 
     @GetMapping("list")
-    public String newsList(Model model, @RequestParam Map<String, Object> params, HttpServletRequest request){
-        model.addAttribute("tname",params.get("tname")==null?"":params.get("tname"));
-        model.addAttribute("category",params.get("category")==null?"":params.get("category"));
-        model.addAttribute("url",PageHelper.getPageUrl(request));
-        model.addAttribute("newsTagsList",newsTagsService.findNewsTagsPages(new Query<>(params),new EntityWrapper<>()));
-        model.addAttribute("newsCategory",newsCategoryService.findNewsCategoryList());
+    public String newsList(Model model, @RequestParam Map<String, Object> params, HttpServletRequest request) {
+        model.addAttribute("tname", params.get("tname") == null ? "" : params.get("tname"));
+        model.addAttribute("category", params.get("category") == null ? "" : params.get("category"));
+        model.addAttribute("url", PageHelper.getPageUrl(request));
+        model.addAttribute("newsTagsList", newsTagsService.findNewsTagsPages(new Query<>(params), new EntityWrapper<>()));
+        model.addAttribute("newsCategory", newsCategoryService.findNewsCategoryList());
         return "/content/news/news-tags";
     }
 
     @GetMapping("/page")
     @ResponseBody
-    public Object page(){
+    public Object page() {
         return newsTagsService.findNewsTagsList();
     }
 
     @GetMapping("/add")
-    public String newsTagsAdd(Model model){
-        model.addAttribute("newsCategory",newsCategoryService.findNewsCategoryList());
+    public String newsTagsAdd(Model model) {
+        model.addAttribute("newsCategory", newsCategoryService.findNewsCategoryList());
         return "content/news/newsTags-add";
     }
 
     @PostMapping("/add")
     @ResponseBody
-    public Boolean newsTagsAdd(@RequestBody NewsTags newsTags){
-        return  newsTagsService.addNewsTags(newsTags);
+    public Boolean newsTagsAdd(@RequestBody NewsTags newsTags) {
+        return newsTagsService.addNewsTags(newsTags);
     }
 
     @DeleteMapping("/delete/{id}")
     @ResponseBody
-    public Boolean newsTagsDelete(@PathVariable Integer id){
-        log.info("id::"+id);
+    public Boolean newsTagsDelete(@PathVariable Integer id) {
+        log.info("id::" + id);
         return newsTagsService.deleteNewsTags(id);
     }
 
 
     @GetMapping("/edit/{id}")
-    public String newsTagsEdit(@PathVariable  Integer id,Model model){
-        model.addAttribute("newsTags",newsTagsService.findNewsTagsById(id));
+    public String newsTagsEdit(@PathVariable Integer id, Model model) {
+        model.addAttribute("newsTags", newsTagsService.findNewsTagsById(id));
         return "/content/news/newsTags-edit";
     }
 
 
     @PutMapping("/edit")
     @ResponseBody
-    public Boolean newsTagsEdit(@RequestBody NewsTags newsTags){
+    public Boolean newsTagsEdit(@RequestBody NewsTags newsTags) {
         return newsTagsService.updateNewTags(newsTags);
     }
 
     @DeleteMapping("/batchDelete")
     @ResponseBody
-    public Boolean newsTagsBatchDelete(@RequestBody List<Integer> ids){
+    public Boolean newsTagsBatchDelete(@RequestBody List<Integer> ids) {
         return newsTagsService.batchDeleteNewsTags(ids);
     }
 

@@ -1,8 +1,8 @@
 package com.chengshi.qixingshe.dao;
 
+import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.chengshi.qixingshe.core.common.util.Query;
 import com.chengshi.qixingshe.model.User;
-import com.baomidou.mybatisplus.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.Map;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author ${author}
@@ -24,6 +24,7 @@ public interface UserMapper extends BaseMapper<User> {
 
     /**
      * 恢复数据
+     *
      * @param id
      * @return
      */
@@ -31,6 +32,7 @@ public interface UserMapper extends BaseMapper<User> {
 
     /**
      * 改变数据的状态
+     *
      * @param id
      * @param status
      * @return
@@ -44,23 +46,24 @@ public interface UserMapper extends BaseMapper<User> {
     List<User> findUserList();
 
     /**
-     * @Description 分页查询
-     * @param query 查询对象
+     * @param query     查询对象
      * @param condition 查询条件
      * @return
+     * @Description 分页查询
      */
     List<Object> findUserPage(Query<Object> query, Map<String, Object> condition);
 
     /**
-     *@Description 分页查询本删除的记录
-     * @param query 查询对象
+     * @param query     查询对象
      * @param condition 查询条件
      * @return
+     * @Description 分页查询本删除的记录
      */
     List<Object> findUserPageDel(Query<Object> query, Map<String, Object> condition);
 
     /**
      * 批量失效用户 0
+     *
      * @param ids
      * @return
      */
@@ -68,6 +71,7 @@ public interface UserMapper extends BaseMapper<User> {
 
     /**
      * 批量恢复用户 2
+     *
      * @param ids
      * @return
      */

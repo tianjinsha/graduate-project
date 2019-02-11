@@ -1,14 +1,14 @@
 package com.chengshi.qixingshe.model;
 
-import java.util.Date;
 import com.baomidou.mybatisplus.activerecord.Model;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author ${author}
@@ -61,15 +61,15 @@ public class Userinfo extends Model<Userinfo> {
     @Override
     public String toString() {
         return "Userinfo{" +
-        ", id=" + id +
-        ", username=" + username +
-        ", introduce=" + introduce +
-        ", createTime=" + createTime +
-        ", sex=" + sex +
-        ", birthday=" + birthday +
-        ", userId=" + userId +
-        ", lastTime=" + lastTime +
-        ", loginCount=" + loginCount +
-        "}";
+                ", id=" + id +
+                ", username=" + username +
+                ", introduce=" + introduce +
+                ", createTime=" + createTime +
+                ", sex=" + sex +
+                ", birthday=" + birthday +
+                ", userId=" + userId +
+                ", lastTime=" + lastTime +
+                ", loginCount=" + loginCount +
+                "}";
     }
 }

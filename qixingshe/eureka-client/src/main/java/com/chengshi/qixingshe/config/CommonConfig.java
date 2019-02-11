@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 public class CommonConfig {
 
     @Bean
-    public RestTemplate restTemplate(){
-        return  new RestTemplate();
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 }

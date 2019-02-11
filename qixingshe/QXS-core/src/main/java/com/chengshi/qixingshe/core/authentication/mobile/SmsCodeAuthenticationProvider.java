@@ -9,53 +9,54 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
  * 实现校验逻辑
- * 
+ *
  * @author tian
  * @date 2018年11月27日
  */
 public class SmsCodeAuthenticationProvider implements AuthenticationProvider {
-	private UserDetailsService userDetailsService;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.springframework.security.authentication.AuthenticationProvider#
-	 * authenticate(org.springframework.security.core.Authentication)
-	 */
-	@Override
-	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+    private UserDetailsService userDetailsService;
 
-		SmsCodeAuthenticationToken authenticationToken = (SmsCodeAuthenticationToken) authentication;
+    /*
+     * (non-Javadoc)
+     *
+     * @see org.springframework.security.authentication.AuthenticationProvider#
+     * authenticate(org.springframework.security.core.Authentication)
+     */
+    @Override
+    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
-		UserDetails user = userDetailsService.loadUserByUsername((String) authenticationToken.getPrincipal());
+        SmsCodeAuthenticationToken authenticationToken = (SmsCodeAuthenticationToken) authentication;
 
-		if (user == null) {
-			throw new InternalAuthenticationServiceException("无法获取用户信息");
-		}
+        UserDetails user = userDetailsService.loadUserByUsername((String) authenticationToken.getPrincipal());
 
-		SmsCodeAuthenticationToken authenticationResult = new SmsCodeAuthenticationToken(user, user.getAuthorities());
+        if (user == null) {
+            throw new InternalAuthenticationServiceException("无法获取用户信息");
+        }
 
-		authenticationResult.setDetails(authenticationToken.getDetails());
+        SmsCodeAuthenticationToken authenticationResult = new SmsCodeAuthenticationToken(user, user.getAuthorities());
 
-		return authenticationResult;
-	}
+        authenticationResult.setDetails(authenticationToken.getDetails());
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.springframework.security.authentication.AuthenticationProvider#
-	 * supports(java.lang.Class)
-	 */
-	@Override
-	public boolean supports(Class<?> authentication) {
-		return SmsCodeAuthenticationToken.class.isAssignableFrom(authentication);
-	}
+        return authenticationResult;
+    }
 
-	public UserDetailsService getUserDetailsService() {
-		return userDetailsService;
-	}
+    /*
+     * (non-Javadoc)
+     *
+     * @see org.springframework.security.authentication.AuthenticationProvider#
+     * supports(java.lang.Class)
+     */
+    @Override
+    public boolean supports(Class<?> authentication) {
+        return SmsCodeAuthenticationToken.class.isAssignableFrom(authentication);
+    }
 
-	public void setUserDetailsService(UserDetailsService userDetailsService) {
-		this.userDetailsService = userDetailsService;
-	}
+    public UserDetailsService getUserDetailsService() {
+        return userDetailsService;
+    }
+
+    public void setUserDetailsService(UserDetailsService userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
 }

@@ -57,7 +57,7 @@
     <div class="form-sms">
         <form method="post" class="layui-form" action="/authentication/mobile">
             <input name="mobile" class="mobile" placeholder="手机号码" type="text" lay-verify="required" class="layui-input"
-                   value="12345654321">
+                   value="18780183730">
             <hr class="hr15">
             <div class="qxs-input">
                 <input name="smsCode" lay-verify="required" placeholder="验证码" type="text" maxlength="6"
@@ -118,7 +118,7 @@
 
     function loadimage() {
         console.log("attr");
-        $('#codeImg').attr("src","/code/image?" + Math.random());
+        $('#codeImg').attr("src", "/code/image?" + Math.random());
     }
 
     function sendSms(obj) {

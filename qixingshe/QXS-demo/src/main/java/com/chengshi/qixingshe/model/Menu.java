@@ -1,8 +1,8 @@
 package com.chengshi.qixingshe.model;
 
-import com.baomidou.mybatisplus.enums.IdType;
-import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.enums.IdType;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -71,16 +71,16 @@ public class Menu extends Model<Menu> {
     @Override
     public String toString() {
         return "Menu{" +
-        ", id=" + id +
-        ", title=" + title +
-        ", identity=" + identity +
-        ", icon=" + icon +
-        ", path=" + path +
-        ", method=" + method +
-        ", type=" + type +
-        ", sort=" + sort +
-        ", status=" + status +
-        ", parent=" + parent +
-        "}";
+                ", id=" + id +
+                ", title=" + title +
+                ", identity=" + identity +
+                ", icon=" + icon +
+                ", path=" + path +
+                ", method=" + method +
+                ", type=" + type +
+                ", sort=" + sort +
+                ", status=" + status +
+                ", parent=" + parent +
+                "}";
     }
 }

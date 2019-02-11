@@ -30,7 +30,8 @@
                 <span class="x-red">*</span>描述
             </label>
             <div class="layui-input-block">
-                 <textarea name="description" placeholder="请输入内容" id="L_description" lay-verify="newsCategory_description"
+                 <textarea name="description" placeholder="请输入内容" id="L_description"
+                           lay-verify="newsCategory_description"
                            class="layui-textarea"></textarea>
             </div>
         </div>

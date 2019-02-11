@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author ${author}
@@ -24,7 +24,7 @@ public interface IAwareService extends IService<Aware> {
 
     Page findAwarePages(Query<Object> page, EntityWrapper<Aware> wrapper);
 
-    public Boolean changeAwareStatus(Integer id,String status);
+    public Boolean changeAwareStatus(Integer id, String status);
 
     public Boolean deleteAware(Integer id);
 }

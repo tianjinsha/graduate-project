@@ -78,7 +78,7 @@
 <script>
     layui.use('layedit', function () {
         var layedit = layui.layedit;
-        var it_content=layedit.build('L_content'); //建立编辑器
+        var it_content = layedit.build('L_content'); //建立编辑器
     });
 </script>
 

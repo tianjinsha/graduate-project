@@ -15,7 +15,7 @@ $(function () {
     });
 });
 
-layui.use(['form', 'layer','laydate'], function(){
+layui.use(['form', 'layer', 'laydate'], function () {
     var form = layui.form,
         layer = layui.layer,
         laydate = layui.laydate;
@@ -31,7 +31,7 @@ layui.use(['form', 'layer','laydate'], function(){
     });
 
     //监听提交
-    form.on('submit(search)', function(data){
+    form.on('submit(search)', function (data) {
         console.log(getUrls())
         search_form(data.field);
         return false;
@@ -39,14 +39,14 @@ layui.use(['form', 'layer','laydate'], function(){
 
 });
 
-const  RequestUrl="http://localhost:8081";
+const RequestUrl = "http://localhost:8081";
 
 /**
  * layui表单提交
  * @param args
  * @param data
  */
-function form_submit(args,data) {
+function form_submit(args, data) {
     //监听提交
     $.ajax({
         type: args.formType,
@@ -54,7 +54,7 @@ function form_submit(args,data) {
         url: args.url,
         data: JSON.stringify(data),
         success: function () {
-            layer.alert(args.title+"成功", {icon: 6}, function () {
+            layer.alert(args.title + "成功", {icon: 6}, function () {
                 // 获得frame索引
                 var index = parent.layer.getFrameIndex(window.name);
                 //关闭当前frame
@@ -62,7 +62,7 @@ function form_submit(args,data) {
             });
         },
         error: function () {
-            layer.alert(args.title+"失败", {icon: 5})
+            layer.alert(args.title + "失败", {icon: 5})
         }
     });
 }
@@ -156,17 +156,18 @@ function getUrls() {
         'protocol': $(location).attr('protocol').toLocaleString(),
         'port': $(location).prop('port').toLocaleString(),
     };
-    var path=urls.protocol+"//"+urls.host+urls.path;
+    var path = urls.protocol + "//" + urls.host + urls.path;
     return path;
 
 }
-function search_form(data) {
-    var _data=delUndefined(data);
-    if($.isEmptyObject(_data)){
-    $(location).attr("href",getUrls());
 
-    }else{
-        $(location).attr("href",getUrls()+"?"+$.param(_data));
+function search_form(data) {
+    var _data = delUndefined(data);
+    if ($.isEmptyObject(_data)) {
+        $(location).attr("href", getUrls());
+
+    } else {
+        $(location).attr("href", getUrls() + "?" + $.param(_data));
     }
 
 }

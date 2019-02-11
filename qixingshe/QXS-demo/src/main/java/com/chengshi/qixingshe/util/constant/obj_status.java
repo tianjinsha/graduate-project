@@ -7,11 +7,11 @@ package com.chengshi.qixingshe.util.constant;
  */
 public interface obj_status {
 
-    String STATUS_DISABLE="0";
+    String STATUS_DISABLE = "0";
 
-   String STATUS_ENABLE="1";
+    String STATUS_ENABLE = "1";
 
-   String STATUS_DELETED="2";
+    String STATUS_DELETED = "2";
 
 
 }

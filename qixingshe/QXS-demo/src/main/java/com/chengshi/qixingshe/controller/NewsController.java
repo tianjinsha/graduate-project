@@ -21,7 +21,7 @@ import java.util.Map;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author ${author}
@@ -37,75 +37,75 @@ public class NewsController {
     INewsCategoryService newsCategoryService;
 
     @GetMapping("list")
-    public String newsList(Model model,@RequestParam Map<String, Object> params, HttpServletRequest request){
-        model.addAttribute("fDate",params.get("fDate")==null?"":params.get("fDate"));
-        model.addAttribute("tDate",params.get("tDate")==null?"":params.get("tDate"));
-        model.addAttribute("title",params.get("title")==null?"":params.get("title"));
-        model.addAttribute("category",params.get("category")==null?"":params.get("category"));
-        model.addAttribute("source",params.get("source")==null?"":params.get("source"));
-        model.addAttribute("status",params.get("status")==null?"":params.get("status"));
-        model.addAttribute("url",PageHelper.getPageUrl(request));
-        model.addAttribute("newsCategory",newsCategoryService.findNewsCategoryList());
-        model.addAttribute("newsList",newsService.findNewsPages(new Query<>(params),new EntityWrapper<>()));
+    public String newsList(Model model, @RequestParam Map<String, Object> params, HttpServletRequest request) {
+        model.addAttribute("fDate", params.get("fDate") == null ? "" : params.get("fDate"));
+        model.addAttribute("tDate", params.get("tDate") == null ? "" : params.get("tDate"));
+        model.addAttribute("title", params.get("title") == null ? "" : params.get("title"));
+        model.addAttribute("category", params.get("category") == null ? "" : params.get("category"));
+        model.addAttribute("source", params.get("source") == null ? "" : params.get("source"));
+        model.addAttribute("status", params.get("status") == null ? "" : params.get("status"));
+        model.addAttribute("url", PageHelper.getPageUrl(request));
+        model.addAttribute("newsCategory", newsCategoryService.findNewsCategoryList());
+        model.addAttribute("newsList", newsService.findNewsPages(new Query<>(params), new EntityWrapper<>()));
         return "/content/news/news-list";
     }
 
     @GetMapping("/{id}")
     @ResponseBody
-    public Object newsOne(@PathVariable Integer id){
+    public Object newsOne(@PathVariable Integer id) {
         return newsService.findNewsById(id);
     }
 
     @GetMapping("/page")
     @ResponseBody
-    public Object newsList2(@RequestParam Map<String, Object> params, Model model, HttpServletRequest request){
+    public Object newsList2(@RequestParam Map<String, Object> params, Model model, HttpServletRequest request) {
 
-        return  newsService.findNewsPages(new Query<>(params),new EntityWrapper<>());
+        return newsService.findNewsPages(new Query<>(params), new EntityWrapper<>());
     }
 
     @PostMapping("/add")
     @ResponseBody
-    public Boolean newsAdd(@RequestBody  News news){
-        return  newsService.addNews(news);
+    public Boolean newsAdd(@RequestBody News news) {
+        return newsService.addNews(news);
     }
 
     @DeleteMapping("/delete/{id}")
     @ResponseBody
-    public Boolean newsDelete(@PathVariable Integer id){
+    public Boolean newsDelete(@PathVariable Integer id) {
         return newsService.deleteNews(id);
     }
 
     @DeleteMapping("/batchDelete")
     @ResponseBody
-    public Boolean newsBatchDelete(@RequestBody List<Integer> ids){
+    public Boolean newsBatchDelete(@RequestBody List<Integer> ids) {
         return newsService.batchDeleteNews(ids);
     }
 
     @PutMapping("/disable/{id}")
     @ResponseBody
-    public Boolean newsDisable(@PathVariable Integer id){
-        log.info("停用："+id);
+    public Boolean newsDisable(@PathVariable Integer id) {
+        log.info("停用：" + id);
         return newsService.changeNewsStatus(id, obj_status.STATUS_DISABLE);
     }
 
     @PutMapping("/enable/{id}")
     @ResponseBody
-    public Boolean newsEnable(@PathVariable Integer id){
-        log.info("启用："+id);
-        return newsService.changeNewsStatus(id,obj_status.STATUS_ENABLE);
+    public Boolean newsEnable(@PathVariable Integer id) {
+        log.info("启用：" + id);
+        return newsService.changeNewsStatus(id, obj_status.STATUS_ENABLE);
     }
 
 
     @PutMapping("/batchEnable")
     @ResponseBody
-    public Boolean newsBatchEnable(@RequestBody List<Integer> ids){
-        return newsService.batchChangeNewsStatus(ids,obj_status.STATUS_ENABLE);
+    public Boolean newsBatchEnable(@RequestBody List<Integer> ids) {
+        return newsService.batchChangeNewsStatus(ids, obj_status.STATUS_ENABLE);
     }
 
     @PutMapping("/batchDisable")
     @ResponseBody
-    public Boolean newsBatchDisable(@RequestBody List<Integer> ids){
-        return newsService.batchChangeNewsStatus(ids,obj_status.STATUS_DISABLE);
+    public Boolean newsBatchDisable(@RequestBody List<Integer> ids) {
+        return newsService.batchChangeNewsStatus(ids, obj_status.STATUS_DISABLE);
     }
 
 

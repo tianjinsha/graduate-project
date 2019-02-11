@@ -1,17 +1,17 @@
 package com.chengshi.qixingshe.model;
 
-import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.enums.IdType;
-import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.enums.IdType;
 import lombok.Data;
 
 import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author ${author}
@@ -49,9 +49,9 @@ public class AwareType extends Model<AwareType> {
     @Override
     public String toString() {
         return "AwareType{" +
-        ", id=" + id +
-        ", cname=" + cname +
-        ", description=" + description +
-        "}";
+                ", id=" + id +
+                ", cname=" + cname +
+                ", description=" + description +
+                "}";
     }
 }

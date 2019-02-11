@@ -40,7 +40,8 @@
                 <span class="x-red">*</span>排序
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="L_sort" name="sort" required="" lay-verify="newsCategory_sort" value="${awareType.sort}"}
+                <input type="text" id="L_sort" name="sort" required="" lay-verify="newsCategory_sort"
+                       value="${awareType.sort}" }
                        autocomplete="off" class="layui-input">
             </div>
             <div class="layui-form-mid layui-word-aux">

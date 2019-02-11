@@ -21,7 +21,7 @@ import java.util.Map;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author ${author}
@@ -38,50 +38,50 @@ public class AwareTagsController {
     IAwareTypeService awareTypeService;
 
     @GetMapping("/list")
-    public String newsList(Model model, @RequestParam Map<String, Object> params, HttpServletRequest request){
-        model.addAttribute("tname",params.get("tname")==null?"":params.get("tname"));
-        model.addAttribute("category",params.get("category")==null?"":params.get("category"));
-        model.addAttribute("url",PageHelper.getPageUrl(request));
-        model.addAttribute("awareType",awareTypeService.findAwareTypeList());
-        model.addAttribute("awareTagsList",awareTagsService.findAwareTagsPages(new Query<>(params),new EntityWrapper<>()));
+    public String newsList(Model model, @RequestParam Map<String, Object> params, HttpServletRequest request) {
+        model.addAttribute("tname", params.get("tname") == null ? "" : params.get("tname"));
+        model.addAttribute("category", params.get("category") == null ? "" : params.get("category"));
+        model.addAttribute("url", PageHelper.getPageUrl(request));
+        model.addAttribute("awareType", awareTypeService.findAwareTypeList());
+        model.addAttribute("awareTagsList", awareTagsService.findAwareTagsPages(new Query<>(params), new EntityWrapper<>()));
         return "/content/aware/aware-tags";
     }
 
     @GetMapping("/add")
-    public String awareTagsAdd(Model model){
-        model.addAttribute("awareType",awareTypeService.findAwareTypeList());
+    public String awareTagsAdd(Model model) {
+        model.addAttribute("awareType", awareTypeService.findAwareTypeList());
         return "/content/aware/awareTags-add";
     }
 
     @PostMapping("/add")
     @ResponseBody
-    public Boolean awareTagAdd(@RequestBody AwareTags awareTags){
+    public Boolean awareTagAdd(@RequestBody AwareTags awareTags) {
         awareTags.setCreateTime(new Date());
         return awareTagsService.insert(awareTags);
     }
 
     @GetMapping("/edit/{id}")
-    public String newsTagsEdit(Model model,@PathVariable Integer id){
-        model.addAttribute("awareType",awareTypeService.findAwareTypeList());
-        model.addAttribute("awareTags",awareTagsService.findAwareTagsById(id));
+    public String newsTagsEdit(Model model, @PathVariable Integer id) {
+        model.addAttribute("awareType", awareTypeService.findAwareTypeList());
+        model.addAttribute("awareTags", awareTagsService.findAwareTagsById(id));
         return "/content/aware/awareTags-edit";
     }
 
     @PutMapping("/edit")
     @ResponseBody
-    public Boolean AwareTypeEdit(@RequestBody AwareTags awareTags){
+    public Boolean AwareTypeEdit(@RequestBody AwareTags awareTags) {
         return awareTagsService.updateById(awareTags);
     }
 
     @DeleteMapping("/delete/{id}")
     @ResponseBody
-    public Boolean AwareTagsDelete(@PathVariable Integer id){
+    public Boolean AwareTagsDelete(@PathVariable Integer id) {
         return awareTagsService.deleteAwareTags(id);
     }
 
     @DeleteMapping("/batchDelete")
     @ResponseBody
-    public Boolean AwareTagsBatchDelete(@RequestBody List<Integer> ids){
+    public Boolean AwareTagsBatchDelete(@RequestBody List<Integer> ids) {
         return awareTagsService.deleteBatchIds(ids);
     }
 

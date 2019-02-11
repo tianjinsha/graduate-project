@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/client2")
 public class DcController2 {
-    org.slf4j.Logger logger=LoggerFactory.getLogger(DcController2.class);
+    org.slf4j.Logger logger = LoggerFactory.getLogger(DcController2.class);
 
     @GetMapping("/consumer")
     public String dc() {

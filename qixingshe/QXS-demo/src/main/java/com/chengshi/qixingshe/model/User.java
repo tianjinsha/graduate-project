@@ -1,18 +1,17 @@
 package com.chengshi.qixingshe.model;
 
-import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.enums.IdType;
-import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.enums.IdType;
 import lombok.Data;
-import org.apache.ibatis.type.Alias;
 
 import java.io.Serializable;
 import java.util.Date;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author ${author}
@@ -78,15 +77,15 @@ public class User extends Model<User> {
     @Override
     public String toString() {
         return "User{" +
-        ", id=" + id +
-        ", nickname=" + nickname +
-        ", email=" + email +
-        ", phoneNum=" + phoneNum +
-        ", password=" + password +
-        ", official=" + official +
-        ", updateTime=" + updateTime +
-        ", official=" + createTime +
-        ", status=" + status +
-        "}";
+                ", id=" + id +
+                ", nickname=" + nickname +
+                ", email=" + email +
+                ", phoneNum=" + phoneNum +
+                ", password=" + password +
+                ", official=" + official +
+                ", updateTime=" + updateTime +
+                ", official=" + createTime +
+                ", status=" + status +
+                "}";
     }
 }

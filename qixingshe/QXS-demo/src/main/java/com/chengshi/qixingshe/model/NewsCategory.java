@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author ${author}
@@ -49,10 +49,10 @@ public class NewsCategory extends Model<NewsCategory> {
     @Override
     public String toString() {
         return "NewsCategory{" +
-        ", id=" + id +
-        ", cname=" + cname +
-        ", description=" + description +
-        ", sort=" + sort +
-        "}";
+                ", id=" + id +
+                ", cname=" + cname +
+                ", description=" + description +
+                ", sort=" + sort +
+                "}";
     }
 }

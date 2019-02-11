@@ -1,15 +1,15 @@
 package com.chengshi.qixingshe.service.impl;
 
-import com.chengshi.qixingshe.model.Userinfo;
-import com.chengshi.qixingshe.dao.UserinfoMapper;
-import com.chengshi.qixingshe.service.IUserinfoService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.chengshi.qixingshe.dao.UserinfoMapper;
+import com.chengshi.qixingshe.model.Userinfo;
+import com.chengshi.qixingshe.service.IUserinfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author ${author}
@@ -23,14 +23,14 @@ public class UserinfoServiceImpl extends ServiceImpl<UserinfoMapper, Userinfo> i
 
     @Override
     public Userinfo findUserInfoById(int id) {
-        Userinfo userinfo=new Userinfo();
+        Userinfo userinfo = new Userinfo();
         userinfo.setId(id);
         return userinfoMapper.selectOne(userinfo);
     }
 
     @Override
     public Userinfo findUserInfoByUserId(int userId) {
-        Userinfo userinfo=new Userinfo();
+        Userinfo userinfo = new Userinfo();
         userinfo.setUserId(userId);
         return userinfoMapper.selectOne(userinfo);
     }

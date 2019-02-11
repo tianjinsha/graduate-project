@@ -17,7 +17,8 @@
         <result column="description" property="description"/>
         <result column="createTime" property="createTime"/>
         <result column="status" property="status"/>
-        <collection column="roleId" property="managers" select="com.chengshi.qixingshe.dao.AuthorityMapper.findManagersByRoleId"></collection>
+        <collection column="roleId" property="managers"
+                    select="com.chengshi.qixingshe.dao.AuthorityMapper.findManagersByRoleId"></collection>
     </resultMap>
 
     <sql id="selectRole">
@@ -36,7 +37,7 @@
         <include refid="selectRole"/>
         <where>
             <if test="id=null and id!=''">
-              id=#{id}
+                id=#{id}
             </if>
             <if test="name!=null and name!=''">
                 AND name LIKE CONCAT('%',#{name},'%')

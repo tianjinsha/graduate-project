@@ -17,7 +17,7 @@ import java.util.Map;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author ${author}
@@ -39,10 +39,10 @@ public class ManagerRoleController {
     @GetMapping("/list")
     public String list(@RequestParam Map<String, Object> params, Model model, HttpServletRequest request) {
 //        log.info("status:"+params.get("status"));
-        model.addAttribute("name",params.get("name")==null?"":params.get("name"));
-        model.addAttribute("url",PageHelper.getPageUrl(request));
-        model.addAttribute("status",params.get("status")==null?"":params.get("status"));
-        model.addAttribute("managerRoles",managerRoleService.findManagerRolePage(new Query<>(params),new EntityWrapper<>()));
+        model.addAttribute("name", params.get("name") == null ? "" : params.get("name"));
+        model.addAttribute("url", PageHelper.getPageUrl(request));
+        model.addAttribute("status", params.get("status") == null ? "" : params.get("status"));
+        model.addAttribute("managerRoles", managerRoleService.findManagerRolePage(new Query<>(params), new EntityWrapper<>()));
         return "/admin/admin-role";
     }
 
@@ -74,8 +74,8 @@ public class ManagerRoleController {
      * @return
      */
     @GetMapping("/edit/{id}")
-    public String managerRoleEdit(Model model,@PathVariable Integer id) {
-        model.addAttribute("managerRole",managerRoleService.findManagerRoleById(id));
+    public String managerRoleEdit(Model model, @PathVariable Integer id) {
+        model.addAttribute("managerRole", managerRoleService.findManagerRoleById(id));
         return "admin/role-edit";
     }
 

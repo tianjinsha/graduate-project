@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author ${author}
@@ -20,20 +20,21 @@ import java.util.List;
 public interface IManagerService extends IService<Manager> {
 
     /**
-     * @param id
-     * 单个管理员数据
+     * @param id 单个管理员数据
      * @return
      */
     Manager findManagerById(Integer id);
 
     /**
      * 管理员数据集合
+     *
      * @return
      */
     List<Manager> findManagerList();
 
     /**
      * 分页管理员数据
+     *
      * @param page
      * @param wrapper
      * @return
@@ -42,6 +43,7 @@ public interface IManagerService extends IService<Manager> {
 
     /**
      * 添加管理员数据
+     *
      * @param manager
      * @return
      */
@@ -49,6 +51,7 @@ public interface IManagerService extends IService<Manager> {
 
     /**
      * 跟新管理员数据
+     *
      * @param manager
      * @return
      */
@@ -56,6 +59,7 @@ public interface IManagerService extends IService<Manager> {
 
     /**
      * 删除管理员数据
+     *
      * @param id
      * @return
      */
@@ -63,6 +67,7 @@ public interface IManagerService extends IService<Manager> {
 
     /**
      * 失效管理员
+     *
      * @param id
      * @return
      */
@@ -70,6 +75,7 @@ public interface IManagerService extends IService<Manager> {
 
     /**
      * 开启管理员
+     *
      * @param id
      * @return
      */
@@ -77,11 +83,11 @@ public interface IManagerService extends IService<Manager> {
 
     /**
      * 批量失效管理员
+     *
      * @param ids
      * @return
      */
     Boolean batchDisableManager(List<Integer> ids);
-
 
 
 }

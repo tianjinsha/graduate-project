@@ -50,8 +50,8 @@ public class ItCategoryController {
 
 
     @GetMapping("/edit/{id}")
-    public String itCategoryEdit(@PathVariable Integer id,Model model) {
-        model.addAttribute("itCategory",itCategoryService.findItCategoryById(id));
+    public String itCategoryEdit(@PathVariable Integer id, Model model) {
+        model.addAttribute("itCategory", itCategoryService.findItCategoryById(id));
         return "/content/it/itCategory-edit";
     }
 
@@ -63,13 +63,13 @@ public class ItCategoryController {
 
     @DeleteMapping("/delete/{id}")
     @ResponseBody
-    public Boolean itCategoryDelete(@PathVariable Integer id){
+    public Boolean itCategoryDelete(@PathVariable Integer id) {
         return itCategoryService.deleteItCategory(id);
     }
 
     @DeleteMapping("/batchDelete")
     @ResponseBody
-    public Boolean ItCategoryBatchDelete(@RequestBody List<Integer> ids){
+    public Boolean ItCategoryBatchDelete(@RequestBody List<Integer> ids) {
         return itCategoryService.batchDeleteItCategory(ids);
     }
 }

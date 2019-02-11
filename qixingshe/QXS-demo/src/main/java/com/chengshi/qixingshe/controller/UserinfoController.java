@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author ${author}
@@ -27,12 +27,13 @@ public class UserinfoController {
 
     /**
      * 跳转到用户信息修改页面
+     *
      * @param id
      * @return
      */
     @GetMapping("/info/{id}")
-    public String userEdit(@PathVariable Integer id, Model model){
-        model.addAttribute("userinfo",userinfoService.findUserInfoByUserId(id));
+    public String userEdit(@PathVariable Integer id, Model model) {
+        model.addAttribute("userinfo", userinfoService.findUserInfoByUserId(id));
         log.info(userinfoService.findUserInfoByUserId(id).toString());
         return "/member/member-edit";
     }

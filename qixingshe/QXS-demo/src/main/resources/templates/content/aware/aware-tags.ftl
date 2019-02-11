@@ -17,7 +17,8 @@
         <a>
           <cite>标签管理</cite></a>
       </span>
-    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
+       href="javascript:location.replace(location.href);" title="刷新">
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
 </div>
 <div class="x-body">
@@ -36,15 +37,18 @@
         </form>
     </div>
     <xblock>
-        <button class="layui-btn layui-btn-danger" onclick="awareTags_deleteAll()"><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" onclick="x_admin_show('添加','/awareTags/add',600,400)"><i class="layui-icon"></i>添加</button>
-        <span class="x-right" style="line-height:40px" >共有数据：<span id="dataCount">${awareTagsList.total}</span> 条</span>
+        <button class="layui-btn layui-btn-danger" onclick="awareTags_deleteAll()"><i class="layui-icon"></i>批量删除
+        </button>
+        <button class="layui-btn" onclick="x_admin_show('添加','/awareTags/add',600,400)"><i class="layui-icon"></i>添加
+        </button>
+        <span class="x-right" style="line-height:40px">共有数据：<span id="dataCount">${awareTagsList.total}</span> 条</span>
     </xblock>
     <table class="layui-table">
         <thead>
         <tr>
             <th>
-                <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+                <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i
+                        class="layui-icon">&#xe605;</i></div>
             </th>
             <th>ID</th>
             <th>名称</th>
@@ -52,13 +56,15 @@
             <th>关注数量</th>
             <td>所属栏目</td>
             <th>创建时间</th>
-            <th>操作</th></tr>
+            <th>操作</th>
+        </tr>
         </thead>
         <tbody>
         <#list awareTagsList.records as awareTags>
         <tr>
             <td>
-                <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='${awareTags.id}'><i class="layui-icon">&#xe605;</i></div>
+                <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='${awareTags.id}'><i
+                        class="layui-icon">&#xe605;</i></div>
             </td>
             <td>${awareTags.id}</td>
             <td>${awareTags.tname}</td>
@@ -67,7 +73,8 @@
             <td>${awareTags.awareType.cname}</td>
             <td>${awareTags.createTime?string('yyyy-MM-dd hh:mm')}</td>
             <td class="td-manage">
-                <a title="编辑"  onclick="x_admin_show('编辑','/awareTags/edit/'+${awareTags.id},600,400)" href="javascript:;">
+                <a title="编辑" onclick="x_admin_show('编辑','/awareTags/edit/'+${awareTags.id},600,400)"
+                   href="javascript:;">
                     <i class="layui-icon">&#xe642;</i>
                 </a>
                 <a title="删除" onclick="awareTags_delete(this,${awareTags.id})" href="javascript:;">

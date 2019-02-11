@@ -23,7 +23,7 @@
     </sql>
 
     <select id="findList" resultMap="ResultMap">
-      <include refid="selectMenu"/>
+        <include refid="selectMenu"/>
     </select>
 
     <select id="findById" resultMap="ResultMap" parameterType="Integer">

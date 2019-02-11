@@ -24,10 +24,12 @@ public class RoleTest {
     @Autowired
     RoleMapper roleMapper;
 
+
+
     @Test
     public void manager() {
 //        log.info("manager:" + managerMapper.findManagerById(1));
-        log.info("manager:"+managerMapper.findManagerByAccount("86608"));
+        log.info("manager:" + managerMapper.findManagerByAccount("86608"));
     }
 
     @Test
@@ -36,10 +38,16 @@ public class RoleTest {
     }
 
     @Test
-    public void roleListTest(){
+    public void roleListTest() {
         Manager manager = managerMapper.findManagerByAccount("86608");
         List<String> collect = manager.getRoles().stream().map(c -> c.getIdentity()).collect(Collectors.toList());
         manager.getRoles().stream().map(c -> new SimpleGrantedAuthority(c.getDescription())).collect(Collectors.toList());
-        collect.forEach(c-> System.out.println("role:"+c));
+        collect.forEach(c -> System.out.println("role:" + c));
+    }
+
+
+    @Test
+    public void  managerTest(){
+
     }
 }

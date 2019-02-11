@@ -1,9 +1,9 @@
 package com.chengshi.qixingshe.service.impl;
 
-import com.chengshi.qixingshe.model.Menu;
-import com.chengshi.qixingshe.dao.MenuMapper;
-import com.chengshi.qixingshe.service.IMenuService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.chengshi.qixingshe.dao.MenuMapper;
+import com.chengshi.qixingshe.model.Menu;
+import com.chengshi.qixingshe.service.IMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author ${author}
@@ -32,5 +32,5 @@ public interface IItService extends IService<It> {
 
     public Boolean batchDeleteIt(List<Integer> ids);
 
-    public Boolean changeItStatus(Integer id,String status);
+    public Boolean changeItStatus(Integer id, String status);
 }

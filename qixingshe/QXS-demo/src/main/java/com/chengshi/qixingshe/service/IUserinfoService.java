@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.service.IService;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author ${author}
@@ -15,6 +15,7 @@ public interface IUserinfoService extends IService<Userinfo> {
 
     /**
      * 根据id查找用户新
+     *
      * @param id
      * @return
      */
@@ -22,6 +23,7 @@ public interface IUserinfoService extends IService<Userinfo> {
 
     /**
      * 根据用户Id查找用户信息
+     *
      * @param userId
      * @return
      */
@@ -29,12 +31,15 @@ public interface IUserinfoService extends IService<Userinfo> {
 
     /**
      * 添加用户信息
+     *
      * @param userinfo
      * @return
      */
     Boolean addUserInfo(Userinfo userinfo);
+
     /**
      * 修改用户信息
+     *
      * @param userinfo
      * @return
      */

@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author ${author}
@@ -29,7 +29,8 @@ public interface INewsService extends IService<News> {
     Boolean deleteNews(Integer id);
 
     /**
-     *跟新新闻
+     * 跟新新闻
+     *
      * @param news
      * @return
      */
@@ -37,22 +38,25 @@ public interface INewsService extends IService<News> {
 
     /**
      * 改变新闻状态
+     *
      * @param id
      * @param status
      * @return
      */
-    Boolean changeNewsStatus(Integer id,String status);
+    Boolean changeNewsStatus(Integer id, String status);
 
     /**
      * 批量新闻状态
+     *
      * @param ids
      * @param status
      * @return
      */
-    Boolean batchChangeNewsStatus(List<Integer> ids,String status);
+    Boolean batchChangeNewsStatus(List<Integer> ids, String status);
 
     /**
      * 批量删除
+     *
      * @param ids
      * @return
      */

@@ -1,15 +1,15 @@
 package com.chengshi.qixingshe.model;
 
-import com.baomidou.mybatisplus.enums.IdType;
-import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.enums.IdType;
 import lombok.Data;
 
 import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author ${author}
@@ -33,7 +33,6 @@ public class Authority extends Model<Authority> {
      * 角色ID
      */
     private String roleId;
-
 
 
     @Override

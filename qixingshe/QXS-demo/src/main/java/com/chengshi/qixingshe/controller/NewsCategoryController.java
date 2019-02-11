@@ -50,14 +50,14 @@ public class NewsCategoryController {
     }
 
     @GetMapping("/edit/{id}")
-    public String newsCategroyEdit(@PathVariable Integer id,Model model){
-        model.addAttribute("newsCategory",newsCategoryService.findNewsCategoryById(id));
+    public String newsCategroyEdit(@PathVariable Integer id, Model model) {
+        model.addAttribute("newsCategory", newsCategoryService.findNewsCategoryById(id));
         return "/content/news/newsCategory-edit";
     }
 
     @ResponseBody
     @PutMapping("/edit")
-    public Boolean newsCategoryEdit(@RequestBody NewsCategory newsCategory){
+    public Boolean newsCategoryEdit(@RequestBody NewsCategory newsCategory) {
         return newsCategoryService.updateNewsCategory(newsCategory);
     }
 
@@ -69,7 +69,7 @@ public class NewsCategoryController {
 
     @DeleteMapping("/batchDelete")
     @ResponseBody
-    public Boolean newsCategoryBatchDelete(@RequestBody List<Integer> ids){
+    public Boolean newsCategoryBatchDelete(@RequestBody List<Integer> ids) {
         return newsCategoryService.batchDeleteNewsCategory(ids);
     }
 

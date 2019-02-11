@@ -18,7 +18,7 @@ import java.util.Map;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author ${author}
@@ -32,61 +32,61 @@ public class LiveController {
     ILiveService liveService;
 
     @GetMapping("list")
-    public String liveList(Model model, @RequestParam Map<String, Object> params, HttpServletRequest request){
-        model.addAttribute("fDate",params.get("fDate")==null?"":params.get("fDate"));
-        model.addAttribute("tDate",params.get("tDate")==null?"":params.get("tDate"));
-        model.addAttribute("title",params.get("title")==null?"":params.get("title"));
-        model.addAttribute("status",params.get("status")==null?"":params.get("status"));
-        model.addAttribute("url",PageHelper.getPageUrl(request));
-        model.addAttribute("liveList",liveService.findLivePages(new Query<>(params),new EntityWrapper<>()));
+    public String liveList(Model model, @RequestParam Map<String, Object> params, HttpServletRequest request) {
+        model.addAttribute("fDate", params.get("fDate") == null ? "" : params.get("fDate"));
+        model.addAttribute("tDate", params.get("tDate") == null ? "" : params.get("tDate"));
+        model.addAttribute("title", params.get("title") == null ? "" : params.get("title"));
+        model.addAttribute("status", params.get("status") == null ? "" : params.get("status"));
+        model.addAttribute("url", PageHelper.getPageUrl(request));
+        model.addAttribute("liveList", liveService.findLivePages(new Query<>(params), new EntityWrapper<>()));
         return "/content/live/live-list";
     }
 
     @GetMapping("/add")
-    public String liveAdd(){
+    public String liveAdd() {
         return "/content/live/live-add";
     }
 
     @PostMapping("/add")
     @ResponseBody
-    public Boolean liveAdd(@RequestBody Live live){
+    public Boolean liveAdd(@RequestBody Live live) {
         live.setCreateTime(new Date());
-         return liveService.insert(live);
+        return liveService.insert(live);
     }
 
     @GetMapping("/edit/{id}")
-    public String liveEdit(Model model, @PathVariable Integer id){
-        model.addAttribute("live",liveService.findLiveById(id));
+    public String liveEdit(Model model, @PathVariable Integer id) {
+        model.addAttribute("live", liveService.findLiveById(id));
         return "/content/live/live-edit";
     }
 
     @PutMapping("/edit")
     @ResponseBody
-    public Boolean liveEdit(@RequestBody Live live){
+    public Boolean liveEdit(@RequestBody Live live) {
         return liveService.updateById(live);
     }
 
     @DeleteMapping("/delete/{id}")
     @ResponseBody
-    public Boolean liveDelete(@PathVariable Integer id){
+    public Boolean liveDelete(@PathVariable Integer id) {
         return liveService.deleteLive(id);
     }
 
     @DeleteMapping("/batchDelete")
     @ResponseBody
-    public Boolean liveBatchDelete(@RequestBody List<Integer> ids){
+    public Boolean liveBatchDelete(@RequestBody List<Integer> ids) {
         return liveService.deleteBatchIds(ids);
     }
 
     @PutMapping("/disable/{id}")
     @ResponseBody
-    public Boolean liveTopicDisable(@PathVariable Integer id){
+    public Boolean liveTopicDisable(@PathVariable Integer id) {
         return liveService.changeLiveStatus(id, obj_status.STATUS_DISABLE);
     }
 
     @PutMapping("/enable/{id}")
     @ResponseBody
-    public Boolean liveTopicEnable(@PathVariable Integer id){
+    public Boolean liveTopicEnable(@PathVariable Integer id) {
         return liveService.changeLiveStatus(id, obj_status.STATUS_ENABLE);
     }
 }

@@ -17,28 +17,29 @@ import java.util.List;
 @Controller
 @Slf4j
 public class IndexController {
-    @GetMapping(path = {"/index",""})
-    public String index(){
+    @GetMapping(path = {"/index", ""})
+    public String index() {
         return "/index";
     }
 
     @GetMapping("/welcome")
-    public String welcome(){
+    public String welcome() {
         return "/welcome";
     }
+
     @GetMapping("/test")
-    public String test(ModelMap map){
-        List<User> users=new ArrayList<>();
-        User user=new User();
-        User user2=new User();
+    public String test(ModelMap map) {
+        List<User> users = new ArrayList<>();
+        User user = new User();
+        User user2 = new User();
         user.setId(1);
         user.setNickname("tian");
         users.add(user);
         user2.setId(2);
         user2.setNickname("jin");
         users.add(user2);
-        map.addAttribute("test","This  is a test");
-        map.addAttribute("users",users);
+        map.addAttribute("test", "This  is a test");
+        map.addAttribute("users", users);
         return "/test";
     }
 }

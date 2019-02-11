@@ -1,16 +1,15 @@
 package com.chengshi.qixingshe.dao;
 
+import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.chengshi.qixingshe.core.common.util.Query;
 import com.chengshi.qixingshe.model.Aware;
-import com.baomidou.mybatisplus.mapper.BaseMapper;
-import com.chengshi.qixingshe.model.AwareType;
 
 import java.util.List;
 import java.util.Map;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author ${author}

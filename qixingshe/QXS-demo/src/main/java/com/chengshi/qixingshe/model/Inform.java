@@ -1,12 +1,13 @@
 package com.chengshi.qixingshe.model;
 
-import java.util.Date;
 import com.baomidou.mybatisplus.activerecord.Model;
+
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author ${author}
@@ -86,11 +87,11 @@ public class Inform extends Model<Inform> {
     @Override
     public String toString() {
         return "Inform{" +
-        ", id=" + id +
-        ", title=" + title +
-        ", content=" + content +
-        ", createTime=" + createTime +
-        ", managerId=" + managerId +
-        "}";
+                ", id=" + id +
+                ", title=" + title +
+                ", content=" + content +
+                ", createTime=" + createTime +
+                ", managerId=" + managerId +
+                "}";
     }
 }

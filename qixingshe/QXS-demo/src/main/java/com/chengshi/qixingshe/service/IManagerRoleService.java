@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author ${author}
@@ -19,20 +19,21 @@ import java.util.List;
  */
 public interface IManagerRoleService extends IService<ManagerRole> {
     /**
-     * @param id
-     * 单个管理员角色数据
+     * @param id 单个管理员角色数据
      * @return
      */
     ManagerRole findManagerRoleById(Integer id);
 
     /**
      * 管理员角色数据集合
+     *
      * @return
      */
     List<ManagerRole> findManagerRoleList();
 
     /**
      * 分页管理员角色数据
+     *
      * @param page
      * @param wrapper
      * @return
@@ -41,6 +42,7 @@ public interface IManagerRoleService extends IService<ManagerRole> {
 
     /**
      * 添加管理员数据
+     *
      * @param managerRole
      * @return
      */
@@ -48,6 +50,7 @@ public interface IManagerRoleService extends IService<ManagerRole> {
 
     /**
      * 跟新管理员数据
+     *
      * @param managerRole
      * @return
      */
@@ -55,6 +58,7 @@ public interface IManagerRoleService extends IService<ManagerRole> {
 
     /**
      * 删除管理员数据
+     *
      * @param id
      * @return
      */
@@ -62,6 +66,7 @@ public interface IManagerRoleService extends IService<ManagerRole> {
 
     /**
      * 失效管理员角色
+     *
      * @param id
      * @return
      */
@@ -69,6 +74,7 @@ public interface IManagerRoleService extends IService<ManagerRole> {
 
     /**
      * 开启管理员
+     *
      * @param id
      * @return
      */
@@ -76,6 +82,7 @@ public interface IManagerRoleService extends IService<ManagerRole> {
 
     /**
      * 批量失效管理员角色
+     *
      * @param ids
      * @return
      */

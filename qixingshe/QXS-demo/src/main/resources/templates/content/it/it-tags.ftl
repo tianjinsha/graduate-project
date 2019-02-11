@@ -17,7 +17,8 @@
         <a>
           <cite>新闻标签</cite></a>
       </span>
-    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
+       href="javascript:location.replace(location.href);" title="刷新">
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
 </div>
 <div class="x-body">
@@ -37,27 +38,31 @@
     </div>
     <xblock>
         <button class="layui-btn layui-btn-danger" onclick="itTags_deleteAll()"><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" onclick="x_admin_show('添加用户','/itTags/add',600,400)"><i class="layui-icon"></i>添加</button>
-        <span class="x-right" style="line-height:40px" >共有数据：<span id="dataCount">${itTagsList.total}</span> 条</span>
+        <button class="layui-btn" onclick="x_admin_show('添加用户','/itTags/add',600,400)"><i class="layui-icon"></i>添加
+        </button>
+        <span class="x-right" style="line-height:40px">共有数据：<span id="dataCount">${itTagsList.total}</span> 条</span>
     </xblock>
     <table class="layui-table">
         <thead>
         <tr>
             <th>
-                <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+                <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i
+                        class="layui-icon">&#xe605;</i></div>
             </th>
             <th>ID</th>
             <th>名称</th>
             <th>描述</th>
             <th>创建时间</th>
             <td>分类</td>
-            <th>操作</th></tr>
+            <th>操作</th>
+        </tr>
         </thead>
         <tbody>
         <#list itTagsList.records as itTags>
         <tr>
             <td>
-                <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='${itTags.id}'><i class="layui-icon">&#xe605;</i></div>
+                <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='${itTags.id}'><i
+                        class="layui-icon">&#xe605;</i></div>
             </td>
             <td>${itTags.id}</td>
             <td>${itTags.tname}</td>
@@ -65,7 +70,7 @@
             <td>${itTags.createTime?string('yyyy-MM-dd hh:mm')}</td>
             <td>${itTags.itCategory.cname}</td>
             <td class="td-manage">
-                <a title="编辑"  onclick="x_admin_show('编辑','/itTags/edit/'+${itTags.id},600,400)" href="javascript:;">
+                <a title="编辑" onclick="x_admin_show('编辑','/itTags/edit/'+${itTags.id},600,400)" href="javascript:;">
                     <i class="layui-icon">&#xe642;</i>
                 </a>
                 <a title="删除" onclick="itTags_delete(this,${itTags.id})" href="javascript:;">

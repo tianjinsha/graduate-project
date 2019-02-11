@@ -1,12 +1,13 @@
 package com.chengshi.qixingshe.model;
 
-import java.util.Date;
 import com.baomidou.mybatisplus.activerecord.Model;
+
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author ${author}
@@ -74,10 +75,10 @@ public class Loginlog extends Model<Loginlog> {
     @Override
     public String toString() {
         return "Loginlog{" +
-        ", id=" + id +
-        ", loginTime=" + loginTime +
-        ", loginIp=" + loginIp +
-        ", userId=" + userId +
-        "}";
+                ", id=" + id +
+                ", loginTime=" + loginTime +
+                ", loginIp=" + loginIp +
+                ", userId=" + userId +
+                "}";
     }
 }

@@ -24,8 +24,9 @@
 <div class="x-body">
     <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>全部展开</button>
-        <button class="layui-btn" onclick="x_admin_show('添加菜单','/menu/add',600,600)"><i class="layui-icon"></i>添加</button>
-        <#--<span class="x-right" style="line-height:40px"></span>-->
+        <button class="layui-btn" onclick="x_admin_show('添加菜单','/menu/add',600,600)"><i class="layui-icon"></i>添加
+        </button>
+    <#--<span class="x-right" style="line-height:40px"></span>-->
     </xblock>
     <table class="layui-table">
         <thead>

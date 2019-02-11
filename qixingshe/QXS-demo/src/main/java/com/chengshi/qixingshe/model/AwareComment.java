@@ -1,13 +1,15 @@
 package com.chengshi.qixingshe.model;
 
 import java.util.Date;
+
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author ${author}
@@ -112,13 +114,13 @@ public class AwareComment extends Model<AwareComment> {
     @Override
     public String toString() {
         return "AwareComment{" +
-        ", id=" + id +
-        ", content=" + content +
-        ", createTime=" + createTime +
-        ", acceptCount=" + acceptCount +
-        ", denyCount=" + denyCount +
-        ", awareId=" + awareId +
-        ", userId=" + userId +
-        "}";
+                ", id=" + id +
+                ", content=" + content +
+                ", createTime=" + createTime +
+                ", acceptCount=" + acceptCount +
+                ", denyCount=" + denyCount +
+                ", awareId=" + awareId +
+                ", userId=" + userId +
+                "}";
     }
 }

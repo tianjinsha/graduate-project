@@ -13,7 +13,7 @@ import java.util.Map;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author ${author}
@@ -23,12 +23,14 @@ public interface IRoleService extends IService<Role> {
 
     /**
      * 角色列表
+     *
      * @return
      */
     public Page findRoleList(Query<Object> query, EntityWrapper<Role> wrapper);
 
     /**
      * 根据id查找角色
+     *
      * @param id
      * @return
      */
@@ -36,6 +38,7 @@ public interface IRoleService extends IService<Role> {
 
     /**
      * 根据名称查找角色
+     *
      * @param name
      * @return
      */
@@ -43,6 +46,7 @@ public interface IRoleService extends IService<Role> {
 
     /**
      * 根据id删除角色
+     *
      * @param id
      * @return
      */
@@ -50,6 +54,7 @@ public interface IRoleService extends IService<Role> {
 
     /**
      * 更新角色
+     *
      * @param role
      * @return
      */
@@ -57,6 +62,7 @@ public interface IRoleService extends IService<Role> {
 
     /**
      * 添加角色
+     *
      * @param role
      * @return
      */
@@ -64,13 +70,15 @@ public interface IRoleService extends IService<Role> {
 
     /**
      * 启用角色
+     *
      * @param id
      * @return
      */
-    public  Boolean disableRole(Integer id);
+    public Boolean disableRole(Integer id);
 
     /**
      * 禁用角色
+     *
      * @param id
      * @return
      */

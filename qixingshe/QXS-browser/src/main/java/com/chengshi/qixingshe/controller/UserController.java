@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @GetMapping("/me")
-    public Object user(Authentication user){
+    public Object user(Authentication user) {
         return user;
     }
 }

@@ -21,7 +21,7 @@ import java.util.Map;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author ${author}
@@ -35,48 +35,48 @@ public class LiveTopicController {
     ILiveTopicService liveTopicService;
 
     @GetMapping("list")
-    public String liveTopicList(Model model, @RequestParam Map<String, Object> params, HttpServletRequest request){
-        model.addAttribute("fDate",params.get("fDate")==null?"":params.get("fDate"));
-        model.addAttribute("tDate",params.get("tDate")==null?"":params.get("tDate"));
-        model.addAttribute("cname",params.get("cname")==null?"":params.get("cname"));
-        model.addAttribute("url",PageHelper.getPageUrl(request));
-        model.addAttribute("liveTopicList",liveTopicService.findLiveTopicPages(new Query<>(params),new EntityWrapper<>()));
+    public String liveTopicList(Model model, @RequestParam Map<String, Object> params, HttpServletRequest request) {
+        model.addAttribute("fDate", params.get("fDate") == null ? "" : params.get("fDate"));
+        model.addAttribute("tDate", params.get("tDate") == null ? "" : params.get("tDate"));
+        model.addAttribute("cname", params.get("cname") == null ? "" : params.get("cname"));
+        model.addAttribute("url", PageHelper.getPageUrl(request));
+        model.addAttribute("liveTopicList", liveTopicService.findLiveTopicPages(new Query<>(params), new EntityWrapper<>()));
         return "/content/live/live-topic";
     }
 
     @GetMapping("/add")
-    public String liveTopicAdd(){
+    public String liveTopicAdd() {
         return "/content/live/liveTopic-add";
     }
 
     @PostMapping("/add")
     @ResponseBody
-    public Boolean liveTopicAdd(@RequestBody LiveTopic liveTopic){
+    public Boolean liveTopicAdd(@RequestBody LiveTopic liveTopic) {
         liveTopic.setCreateTime(new Date());
         return liveTopicService.insert(liveTopic);
     }
 
     @GetMapping("/edit/{id}")
-    public String liveTopicEdit(@PathVariable Integer id,Model model){
-        model.addAttribute("liveTopic",liveTopicService.findLiveTopicById(id));
+    public String liveTopicEdit(@PathVariable Integer id, Model model) {
+        model.addAttribute("liveTopic", liveTopicService.findLiveTopicById(id));
         return "/content/live/liveTopic-edit";
     }
 
     @PutMapping("/edit")
     @ResponseBody
-    public Boolean liveTopicEdit(@RequestBody LiveTopic liveTopic){
+    public Boolean liveTopicEdit(@RequestBody LiveTopic liveTopic) {
         return liveTopicService.updateById(liveTopic);
     }
 
     @DeleteMapping("/delete/{id}")
     @ResponseBody
-    public Boolean liveTopicDelete(@PathVariable Integer id){
+    public Boolean liveTopicDelete(@PathVariable Integer id) {
         return liveTopicService.deleteLiveTopic(id);
     }
 
     @DeleteMapping("batchDelete")
     @ResponseBody
-    public Boolean liveTopicBatchDelete(@RequestBody List<Integer> ids){
+    public Boolean liveTopicBatchDelete(@RequestBody List<Integer> ids) {
         return liveTopicService.deleteBatchIds(ids);
     }
 

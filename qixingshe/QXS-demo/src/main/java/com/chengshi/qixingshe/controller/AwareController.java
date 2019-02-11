@@ -19,7 +19,7 @@ import java.util.Map;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author ${author}
@@ -33,59 +33,59 @@ public class AwareController {
     IAwareService awareService;
 
     @GetMapping("list")
-    public String AwareList(Model model, @RequestParam Map<String, Object> params, HttpServletRequest request){
-        model.addAttribute("fDate",params.get("fDate")==null?"":params.get("fDate"));
-        model.addAttribute("tDate",params.get("tDate")==null?"":params.get("tDate"));
-        model.addAttribute("title",params.get("title")==null?"":params.get("title"));
-        model.addAttribute("status",params.get("status")==null?"":params.get("status"));
-        model.addAttribute("url",PageHelper.getPageUrl(request));
-        model.addAttribute("awareList",awareService.findAwarePages(new Query<>(params),new EntityWrapper<>()));
+    public String AwareList(Model model, @RequestParam Map<String, Object> params, HttpServletRequest request) {
+        model.addAttribute("fDate", params.get("fDate") == null ? "" : params.get("fDate"));
+        model.addAttribute("tDate", params.get("tDate") == null ? "" : params.get("tDate"));
+        model.addAttribute("title", params.get("title") == null ? "" : params.get("title"));
+        model.addAttribute("status", params.get("status") == null ? "" : params.get("status"));
+        model.addAttribute("url", PageHelper.getPageUrl(request));
+        model.addAttribute("awareList", awareService.findAwarePages(new Query<>(params), new EntityWrapper<>()));
         return "/content/aware/aware-list";
     }
 
     @GetMapping("/add")
-    public String AwareAdd(){
+    public String AwareAdd() {
         return "/content/aware/aware-add";
     }
 
     @PostMapping
     @ResponseBody
-    public Boolean awareAdd(@RequestBody Aware aware){
+    public Boolean awareAdd(@RequestBody Aware aware) {
         return false;
     }
 
     @GetMapping("/edit")
-    public String awareEdit(@PathVariable Integer id,Model model){
-        model.addAttribute("aware",awareService.findAwareById(id));
+    public String awareEdit(@PathVariable Integer id, Model model) {
+        model.addAttribute("aware", awareService.findAwareById(id));
         return "/content/aware/aware-edit";
     }
 
     @PutMapping("/edit")
-    public Boolean awareEdit(@RequestBody Aware aware){
+    public Boolean awareEdit(@RequestBody Aware aware) {
         return awareService.updateById(aware);
     }
 
     @DeleteMapping("/delete/{id}")
     @ResponseBody
-    public Boolean awareDelete(@PathVariable Integer id){
+    public Boolean awareDelete(@PathVariable Integer id) {
         return awareService.deleteAware(id);
     }
 
     @PutMapping("/enable")
     @ResponseBody
-    public Boolean awareEnable(@PathVariable Integer id){
+    public Boolean awareEnable(@PathVariable Integer id) {
         return awareService.changeAwareStatus(id, obj_status.STATUS_ENABLE);
     }
 
     @PutMapping("/disable")
     @ResponseBody
-    public Boolean awareDisable(@PathVariable Integer id){
+    public Boolean awareDisable(@PathVariable Integer id) {
         return awareService.changeAwareStatus(id, obj_status.STATUS_DISABLE);
     }
 
     @DeleteMapping("/batchDelete")
     @ResponseBody
-    public Boolean awareBatchDelete(List<Integer> ids){
+    public Boolean awareBatchDelete(List<Integer> ids) {
         return awareService.deleteBatchIds(ids);
     }
 

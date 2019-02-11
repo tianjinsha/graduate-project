@@ -27,11 +27,11 @@
     </select>
 
     <select id="findPage" resultMap="ResultMap">
-    <include refid="selectAwareType"/>
-    <where>
-        <if test="cname !=null and cname!=''">
-            cname LIKE CONCAT('%',#{cname},'%')
-        </if>
-    </where>
+        <include refid="selectAwareType"/>
+        <where>
+            <if test="cname !=null and cname!=''">
+                cname LIKE CONCAT('%',#{cname},'%')
+            </if>
+        </where>
     </select>
 </mapper>

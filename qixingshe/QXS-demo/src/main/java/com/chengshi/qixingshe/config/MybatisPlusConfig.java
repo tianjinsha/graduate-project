@@ -1,16 +1,14 @@
 package com.chengshi.qixingshe.config;
 
-import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import com.baomidou.mybatisplus.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.plugins.PerformanceInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import javax.sql.DataSource;
-
 /**
- * @Description  mybatis-pus 配置
+ * @author tianjinshan
+ * @description mybatis-pus 配置
  */
 @MapperScan("com.chengshi.qixingshe.dao")
 @Configuration

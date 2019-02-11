@@ -28,7 +28,8 @@
                 <span class="x-red">*</span>名称
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="L_name" name="tname" required="" lay-verify="newsTags_name" value="${newsTags.tname}"}
+                <input type="text" id="L_name" name="tname" required="" lay-verify="newsTags_name"
+                       value="${newsTags.tname}" }
                        autocomplete="off" class="layui-input">
             </div>
             <div class="layui-form-mid layui-word-aux">

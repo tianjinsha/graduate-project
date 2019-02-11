@@ -40,12 +40,12 @@ public class ManagerController {
     @GetMapping("/list")
     public String list(@RequestParam Map<String, Object> params, Model model, HttpServletRequest request) {
 //        log.info("status:"+params.get("status"));
-        model.addAttribute("account",params.get("account")==null?"":params.get("account"));
-        model.addAttribute("fDate",params.get("fDate")==null?"":params.get("fDate"));
-        model.addAttribute("tDate",params.get("tDate")==null?"":params.get("tDate"));
-        model.addAttribute("status",params.get("status")==null?"":params.get("status"));
-        model.addAttribute("url",PageHelper.getPageUrl(request));
-        model.addAttribute("managers",managerService.findManagerPage(new Query<>(params),new EntityWrapper<>()));
+        model.addAttribute("account", params.get("account") == null ? "" : params.get("account"));
+        model.addAttribute("fDate", params.get("fDate") == null ? "" : params.get("fDate"));
+        model.addAttribute("tDate", params.get("tDate") == null ? "" : params.get("tDate"));
+        model.addAttribute("status", params.get("status") == null ? "" : params.get("status"));
+        model.addAttribute("url", PageHelper.getPageUrl(request));
+        model.addAttribute("managers", managerService.findManagerPage(new Query<>(params), new EntityWrapper<>()));
         return "/admin/admin-list";
     }
 
@@ -78,7 +78,7 @@ public class ManagerController {
      */
     @GetMapping("/edit/{id}")
     public String managerEdit(Model model, @PathVariable Integer id) {
-        model.addAttribute("manager",managerService.findManagerById(id));
+        model.addAttribute("manager", managerService.findManagerById(id));
         return "admin/admin-edit";
     }
 

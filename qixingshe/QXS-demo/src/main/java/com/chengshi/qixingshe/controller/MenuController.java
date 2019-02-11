@@ -27,19 +27,19 @@ public class MenuController {
     IMenuService menuService;
 
     @GetMapping("/list")
-    public String menuList(Model model){
-        model.addAttribute("menuList",menuService.findMenuList());
+    public String menuList(Model model) {
+        model.addAttribute("menuList", menuService.findMenuList());
         return "/system/menu-list";
     }
 
     @GetMapping("/add")
-    public String menuAdd(){
+    public String menuAdd() {
         return "/system/menu-add";
     }
 
     @GetMapping("/edit")
-    public String menuEdit(@PathVariable Integer id, Model model){
-        model.addAttribute("menu",menuService.findMenuByid(id));
+    public String menuEdit(@PathVariable Integer id, Model model) {
+        model.addAttribute("menu", menuService.findMenuByid(id));
         return "/system/menu-edit";
     }
 }

@@ -1,7 +1,7 @@
 package com.chengshi.qixingshe.dao;
 
-import com.chengshi.qixingshe.model.Menu;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.chengshi.qixingshe.model.Menu;
 
 import java.util.List;
 

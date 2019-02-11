@@ -1,6 +1,5 @@
 package com.chengshi.qixingshe.model;
 
-import java.util.Date;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
@@ -9,10 +8,11 @@ import com.baomidou.mybatisplus.enums.IdType;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author ${author}
@@ -61,12 +61,12 @@ public class AwareTags extends Model<AwareTags> {
     @Override
     public String toString() {
         return "AwareTags{" +
-        ", id=" + id +
-        ", tname=" + tname +
-        ", description=" + description +
-        ", attentionCount=" + attentionCount +
-        ", createTime=" + createTime +
-        ", awareTypeId=" + awareTypeId +
-        "}";
+                ", id=" + id +
+                ", tname=" + tname +
+                ", description=" + description +
+                ", attentionCount=" + attentionCount +
+                ", createTime=" + createTime +
+                ", awareTypeId=" + awareTypeId +
+                "}";
     }
 }

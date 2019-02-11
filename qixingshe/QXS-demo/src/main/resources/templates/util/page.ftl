@@ -55,7 +55,7 @@
             <#else>
                 <a href="${url}page=${current+1}" class="next">&gt;&gt;</a>
             </#if>
-            <#else >没有查询到数据！
+        <#else >没有查询到数据！
         </#if>
     </div>
 

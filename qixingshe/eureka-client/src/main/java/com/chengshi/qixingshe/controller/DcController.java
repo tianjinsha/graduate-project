@@ -20,7 +20,7 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("/eureka1")
 @ResponseBody
 public class DcController {
-    org.slf4j.Logger logger=LoggerFactory.getLogger(DcController.class);
+    org.slf4j.Logger logger = LoggerFactory.getLogger(DcController.class);
     @Autowired
     LoadBalancerClient loadBalancerClient;
     @Autowired
@@ -31,15 +31,16 @@ public class DcController {
     @GetMapping("/consumer")
     public String dc1() {
         ServiceInstance serviceInstance = loadBalancerClient.choose("eureka-client-2");
-        String url = "http://"  + ":" + serviceInstance.getPort() + "/dc";
-        logger.info("url:"+url);
+        String url = "http://" + ":" + serviceInstance.getPort() + "/dc";
+        logger.info("url:" + url);
         logger.info("======<call trace 1>=======");
         return restTemplate.getForObject(url, String.class);
     }
+
     @GetMapping("/dc")
     public String dc() {
         String services = "Services: " + discoveryClient.getServices();
-        logger.info("url:"+services);
+        logger.info("url:" + services);
         logger.info("======<call trace 1>=======");
         return services;
     }

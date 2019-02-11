@@ -39,7 +39,6 @@
     </resultMap>
 
 
-
     <sql id="selectNews">
         SELECT
         *
@@ -64,34 +63,34 @@
     </select>
 
     <select id="findPage" resultMap="ResultMap2">
-    <include refid="selectNews2"/>
-      <where>
-          <if test="title !=null and title!=''">
-              title LIKE CONCAT('%',#{title},'%')
-          </if>
-          <if test="category !=null and category!=''">
-              AND n.categoryId=#{category}
-          </if>
-          <if test="author !=null and author!=''">
-             AND author LIKE CONCAT('%',#{author},'%')
-          </if>
-          <if test="source !=null and source!=''">
-             AND source LIKE CONCAT('%',#{source},'%')
-          </if>
-          <if test="fDate != null and fDate !=''">
-              AND DATEDIFF(createTime,#{fDate})&gt;0
-          </if>
-          <if test="tDate != null and tDate !=''">
-              AND DATEDIFF(createTime,#{tDate}) &lt;0
-          </if>
-          <if test="status!=null">
-              <if test="status eq 0 or status eq 1">
-                  AND status=#{status}
-              </if>
-          </if>
-      </where>
+        <include refid="selectNews2"/>
+        <where>
+            <if test="title !=null and title!=''">
+                title LIKE CONCAT('%',#{title},'%')
+            </if>
+            <if test="category !=null and category!=''">
+                AND n.categoryId=#{category}
+            </if>
+            <if test="author !=null and author!=''">
+                AND author LIKE CONCAT('%',#{author},'%')
+            </if>
+            <if test="source !=null and source!=''">
+                AND source LIKE CONCAT('%',#{source},'%')
+            </if>
+            <if test="fDate != null and fDate !=''">
+                AND DATEDIFF(createTime,#{fDate})&gt;0
+            </if>
+            <if test="tDate != null and tDate !=''">
+                AND DATEDIFF(createTime,#{tDate}) &lt;0
+            </if>
+            <if test="status!=null">
+                <if test="status eq 0 or status eq 1">
+                    AND status=#{status}
+                </if>
+            </if>
+        </where>
     </select>
-    
+
     <update id="batchChangeStatus">
         UPDATE news set status='2',status=#{status}
         where id IN

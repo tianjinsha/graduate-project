@@ -13,24 +13,24 @@ import java.util.regex.Pattern;
  */
 @Slf4j
 public class PageHelper {
-    public static String  getPageUrl(HttpServletRequest request){
+    public static String getPageUrl(HttpServletRequest request) {
         String args;
-        String url =request.getContextPath()+request.getServletPath();
-        log.info("requesturl:"+request.getQueryString());
-        if(request.getQueryString()!=null){
-            Pattern pattern=Pattern.compile("&?page=\\d+");
-            Matcher matcher=pattern.matcher(request.getQueryString());
-            if(matcher.find()){
-                args=request.getQueryString().replaceAll("&?page=\\d+","");
-                log.info("args:"+args);
-            }else{
-                args=request.getQueryString();
+        String url = request.getContextPath() + request.getServletPath();
+        log.info("requesturl:" + request.getQueryString());
+        if (request.getQueryString() != null) {
+            Pattern pattern = Pattern.compile("&?page=\\d+");
+            Matcher matcher = pattern.matcher(request.getQueryString());
+            if (matcher.find()) {
+                args = request.getQueryString().replaceAll("&?page=\\d+", "");
+                log.info("args:" + args);
+            } else {
+                args = request.getQueryString();
             }
-            url=url+"?"+args+"&";
-        }else{
-            url=url+"?";
+            url = url + "?" + args + "&";
+        } else {
+            url = url + "?";
         }
-        log.info("url:"+url);
+        log.info("url:" + url);
         return url;
     }
 }

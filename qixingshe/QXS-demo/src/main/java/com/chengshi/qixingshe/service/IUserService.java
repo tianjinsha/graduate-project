@@ -34,15 +34,16 @@ public interface IUserService extends IService<User> {
     List<User> findUserList();
 
     /**
-     * @Description 分页查询
-     * @param page 查询条件
+     * @param page    查询条件
      * @param wrapper
      * @return
+     * @Description 分页查询
      */
     Page findUserPage(Query<Object> page, EntityWrapper<User> wrapper);
 
     /**
      * 删除的用户
+     *
      * @param page
      * @param wrapper
      * @return
@@ -57,29 +58,30 @@ public interface IUserService extends IService<User> {
     Boolean addUser(User user);
 
     /**
-     *
-     * @return
      * @param id
+     * @return
      * @Description 删除用户
      */
     Boolean deleteUser(Integer id);
 
     /**
      * 恢复用户 1
+     *
      * @param id
      * @return
      */
     Boolean recoverUser(Integer id);
 
     /**
-     * @Description 停用用户 2
      * @param id
      * @return
+     * @Description 停用用户 2
      */
     Boolean stopUser(Integer id);
 
     /**
      * 临时删除用户，使其失效 0
+     *
      * @param id
      * @return
      */
@@ -94,6 +96,7 @@ public interface IUserService extends IService<User> {
 
     /**
      * 批量失效用户
+     *
      * @param ids
      * @return
      */
@@ -101,6 +104,7 @@ public interface IUserService extends IService<User> {
 
     /**
      * 批量恢复用户
+     *
      * @param ids
      * @return
      */

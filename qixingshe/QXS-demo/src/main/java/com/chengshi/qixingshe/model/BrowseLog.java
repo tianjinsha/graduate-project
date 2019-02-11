@@ -1,13 +1,14 @@
 package com.chengshi.qixingshe.model;
 
-import java.util.Date;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
+
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author ${author}
@@ -88,11 +89,11 @@ public class BrowseLog extends Model<BrowseLog> {
     @Override
     public String toString() {
         return "BrowseLog{" +
-        ", id=" + id +
-        ", browseTime=" + browseTime +
-        ", articleId=" + articleId +
-        ", articelType=" + articelType +
-        ", userId=" + userId +
-        "}";
+                ", id=" + id +
+                ", browseTime=" + browseTime +
+                ", articleId=" + articleId +
+                ", articelType=" + articelType +
+                ", userId=" + userId +
+                "}";
     }
 }

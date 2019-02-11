@@ -27,7 +27,8 @@
                 <span class="x-red">*</span>名称
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="L_name" name="cname" required="" lay-verify="itCategory_name" value="${itCategory.cname}"
+                <input type="text" id="L_name" name="cname" required="" lay-verify="itCategory_name"
+                       value="${itCategory.cname}"
                        autocomplete="off" class="layui-input">
             </div>
             <div class="layui-form-mid layui-word-aux">
@@ -39,7 +40,8 @@
                 <span class="x-red">*</span>排序
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="L_sort" name="sort" required="" lay-verify="newsCategory_sort" value="${itCategory.sort}"}
+                <input type="text" id="L_sort" name="sort" required="" lay-verify="newsCategory_sort"
+                       value="${itCategory.sort}" }
                        autocomplete="off" class="layui-input">
             </div>
             <div class="layui-form-mid layui-word-aux">

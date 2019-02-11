@@ -34,7 +34,7 @@
                     <option value="1" <#if status=='1'>selected</#if>>已启用</option>
                 </select>
             </div>
-        <button class="layui-btn"  lay-submit="" lay-filter="search"><i class="layui-icon">&#xe615;</i></button>
+            <button class="layui-btn" lay-submit="" lay-filter="search"><i class="layui-icon">&#xe615;</i></button>
         </form>
     </div>
     <xblock>

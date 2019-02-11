@@ -22,26 +22,27 @@ public class UserSupport {
         this.tDate = tDate;
         this.nickname = nickname;
     }
+
     public UserSupport(String fDate, String tDate, String nickname) {
         setfDate(fDate);
         settDate(tDate);
         this.nickname = nickname;
     }
 
-    public void setfDate(String date){
-        SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
+    public void setfDate(String date) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         try {
-            this.fDate=format.parse(date);
+            this.fDate = format.parse(date);
         } catch (ParseException e) {
             e.printStackTrace();
         }
     }
 
 
-    public void settDate(String date){
-        SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
+    public void settDate(String date) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         try {
-            this.tDate=format.parse(date);
+            this.tDate = format.parse(date);
         } catch (ParseException e) {
             e.printStackTrace();
         }

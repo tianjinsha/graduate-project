@@ -1,14 +1,14 @@
 package com.chengshi.qixingshe.model;
 
-import java.util.Date;
 import com.baomidou.mybatisplus.activerecord.Model;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author ${author}
@@ -68,15 +68,15 @@ public class Aware extends Model<Aware> {
     @Override
     public String toString() {
         return "Aware{" +
-        ", id=" + id +
-        ", title=" + title +
-        ", thumb=" + thumb +
-        ", description=" + description +
-        ", attentionCount=" + attentionCount +
-        ", tags=" + tags +
-        ", answerCount=" + answerCount +
-        ", createTime=" + createTime +
-        ", userId=" + userId +
-        "}";
+                ", id=" + id +
+                ", title=" + title +
+                ", thumb=" + thumb +
+                ", description=" + description +
+                ", attentionCount=" + attentionCount +
+                ", tags=" + tags +
+                ", answerCount=" + answerCount +
+                ", createTime=" + createTime +
+                ", userId=" + userId +
+                "}";
     }
 }

@@ -2,11 +2,11 @@ package com.chengshi.qixingshe.service.impl;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
-import com.chengshi.qixingshe.core.common.util.Query;
-import com.chengshi.qixingshe.model.It;
-import com.chengshi.qixingshe.dao.ItMapper;
-import com.chengshi.qixingshe.service.IItService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.chengshi.qixingshe.core.common.util.Query;
+import com.chengshi.qixingshe.dao.ItMapper;
+import com.chengshi.qixingshe.model.It;
+import com.chengshi.qixingshe.service.IItService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author ${author}
@@ -28,6 +28,7 @@ public class ItServiceImpl extends ServiceImpl<ItMapper, It> implements IItServi
 
     @Autowired
     ItMapper itMapper;
+
     @Override
     public It findItById(Integer id) {
         return itMapper.findById(id);
@@ -41,7 +42,7 @@ public class ItServiceImpl extends ServiceImpl<ItMapper, It> implements IItServi
     @Override
     public Page findItPages(Query<Object> page, EntityWrapper<It> wrapper) {
         page.setSize(10);
-        page.setRecords(itMapper.findPage(page,page.getCondition()));
+        page.setRecords(itMapper.findPage(page, page.getCondition()));
         return page;
     }
 
@@ -50,8 +51,8 @@ public class ItServiceImpl extends ServiceImpl<ItMapper, It> implements IItServi
         it.setCreateTime(new Date());
         it.setUserId(1);
         log.info(it.toString());
-        int count=itMapper.insert(it);
-        if (count==1){
+        int count = itMapper.insert(it);
+        if (count == 1) {
             return true;
         }
         return false;
@@ -59,12 +60,12 @@ public class ItServiceImpl extends ServiceImpl<ItMapper, It> implements IItServi
 
     @Override
     public Boolean deleteIt(Integer id) {
-        EntityWrapper wrapper=new EntityWrapper();
-        It it=new It();
+        EntityWrapper wrapper = new EntityWrapper();
+        It it = new It();
         it.setId(id);
         wrapper.setEntity(it);
-        int count=itMapper.delete(wrapper);
-        if (count==1){
+        int count = itMapper.delete(wrapper);
+        if (count == 1) {
             return true;
         }
         return false;
@@ -77,8 +78,8 @@ public class ItServiceImpl extends ServiceImpl<ItMapper, It> implements IItServi
 
     @Override
     public Boolean batchDeleteIt(List<Integer> ids) {
-        int count=itMapper.deleteBatchIds(ids);
-        if (count==ids.size()){
+        int count = itMapper.deleteBatchIds(ids);
+        if (count == ids.size()) {
             return true;
         }
         return false;
@@ -86,11 +87,11 @@ public class ItServiceImpl extends ServiceImpl<ItMapper, It> implements IItServi
 
     @Override
     public Boolean changeItStatus(Integer id, String status) {
-        It it=new It();
+        It it = new It();
         it.setId(id);
         it.setStatus(status);
-        int count=itMapper.updateById(it);
-        if (count==1){
+        int count = itMapper.updateById(it);
+        if (count == 1) {
             return true;
         }
         return false;
